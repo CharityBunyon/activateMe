@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using activateMe.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,8 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace activateMe
 {
@@ -21,6 +24,10 @@ namespace activateMe
         {
             Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -44,6 +51,19 @@ namespace activateMe
                         };
                     }
                 );
+
+
+
+            services.AddControllers();
+            services.AddTransient<UserRepo>();
+            services.AddTransient<SampleRecipeRepo>();
+            services.AddTransient<SampleExercisesRepo>();
+            services.AddTransient<BadgeRepo>();
+            services.AddTransient<ExerciseCategoryRepo>();
+            services.AddTransient<ExerciseLogRepo>();
+            services.AddTransient<FoodLogRepo>();
+            services.AddTransient<FoodCategoryRepo>();
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,15 +74,21 @@ namespace activateMe
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("ItsAllGood");
+
+            app.UseAuthentication();
+
+            app.UseHttpsRedirection();
+
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
+
     }
 }
