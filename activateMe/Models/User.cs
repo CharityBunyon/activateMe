@@ -8,15 +8,16 @@ namespace activateMe.Models
 {
     public class User
     {
-        public int id { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public DateTime dateJoined { get; set; }
-        public string userName { get; set; }
-        public string email { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string imageUrl { get; set; }
-        public  int points { get; set; }
+        public int Id { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public DateTime DateJoined { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ImageUrl { get; set; }
+        public  int Points { get; set; }
+
     }
 }
