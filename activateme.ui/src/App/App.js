@@ -1,12 +1,65 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+// import firebaseConnection from '../helpers/data/connection';
+
+import Navbar from '../components/shared/Navbar/Navbar';
+import Auth from '../components/pages/Auth/Auth';
+import Dashboard from '../components/pages/Dashboard/Dashboard';
+import Exercises from '../components/pages/Exercises/Exercises';
+import Home from '../components/pages/Home/Home';
+import LogPage from './../components/pages/LogPage/LogPage';
+import Recipes from './../components/pages/Recipes/Recipes';
+
 import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <button className='btn btn-danger'>Hello</button>
-    </div>
-  );
+
+// firebaseConnection();
+
+class App extends React.Component {
+
+  state ={
+    authed: false,
+  }
+  
+  // componentDidMount() {
+  //   this.removeListener = firebase.auth().onAuthStateChanged((userObj) => {
+  //     if (userObj) {
+  //       this.setState({ authed: true, userObj });
+  //     } else {
+  //       this.setState({ authed: false });
+  //     }
+  //   });
+  // }
+
+  // componentWillUnmount() {
+  //   this.removeListener();
+  // }
+  
+  render() {
+    const {authed, userObj} = this.state;
+    return (
+      <div>
+        <Router>
+          <Navbar authed={authed}/>
+          <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/activateme/auth" exact component={Auth}/>
+              <Route path="/activateme/dashboard" exact component={Dashboard}/> 
+              <Route path="/activateme/exercises" exact component={Exercises}/>
+              <Route path="/activateme/recipes" exact component={Recipes}/>
+              <Route path="/activateme/log" exact component={LogPage}/>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
