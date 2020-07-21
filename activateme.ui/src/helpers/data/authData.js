@@ -38,7 +38,7 @@ const registerUser = (email, password) => firebase.auth().createUserWithEmailAnd
         });
     });
   
-  const addUserToDatabase = (userObj) => axios.post(`${baseUrl}/activateMe/addUser`, userObj);
+  const addUserToDatabase = (userObj) => axios.post(`${baseUrl}/addUser`, userObj);
   
   export default {
     loginUser, registerUser, loginWithGoogle, addUserToDatabase,

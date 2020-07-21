@@ -1,0 +1,25 @@
+.register-form {
+    background-image: url("../../../assets/register-pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .register-form .grid {
+    height: 100%;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+  .register-button {
+      background-color: #3b945e;
+  }
+
+  .register-link{
+    color: #008080;
+  }
