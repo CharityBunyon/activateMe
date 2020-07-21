@@ -1,0 +1,25 @@
+.login-form {
+    background-image: url("../../../assets/login-pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .login-form .grid {
+    height: 100%;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+  .login-button {
+      background-color: #3b945e;
+  }
+
+  .sign-up-link{
+    color: #008080;
+  }
