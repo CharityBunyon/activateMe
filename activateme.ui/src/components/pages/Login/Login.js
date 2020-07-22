@@ -77,11 +77,7 @@ class Login extends React.Component {
                 </form>
             
                 <div className="ui message">
-                    <button className="ui circular google plus icon button" onClick={authData.loginWithGoogle}>
-                    <i className="google plus icon"></i>
-                    </button>
-
-                New to us? <Link to='/activateme/register' className='sign-up-link'>Sign Up</Link>
+                    New to us? <Link to='/activateme/register' className='sign-up-link'>Sign Up</Link>
                 </div>
                 </div>
                 </div>
