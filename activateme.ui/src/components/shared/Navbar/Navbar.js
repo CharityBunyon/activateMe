@@ -17,7 +17,7 @@ class Navbar extends React.Component {
         const { authed } = this.props;
     
         return ( 
-            <div className="ui grid large top secondary menu">
+            <div className="ui grid large top secondary menu navbar">
                
                 <Link className="item nav-link" to="/">
                     <img src={logo} alt="activateMeLog"/>
