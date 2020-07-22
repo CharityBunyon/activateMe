@@ -38,8 +38,26 @@ const registerUser = (email, password) => firebase.auth().createUserWithEmailAnd
         });
     });
   
-  const addUserToDatabase = (userObj) => axios.post(`${baseUrl}/addUser`, userObj);
+const addUserToDatabase = (userObj) => axios.post(`${baseUrl}/addUser`, userObj);
+
+const getUserByEmail = (email) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/userEmail/${email}`)
+    .then((response) => {
+      let user = {};
+      user = response.data;
+      resolve(user);
+    })
+    .catch((error) => reject(error));
+  })
+
+//  const getEmail = () => firebase.auth().currentUser.email;
+
+    
+    
+  
+
+  
   
   export default {
-    loginUser, registerUser, loginWithGoogle, addUserToDatabase,
+    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail
   };

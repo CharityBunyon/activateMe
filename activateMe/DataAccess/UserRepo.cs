@@ -56,6 +56,19 @@ namespace activateMe.DataAccess
             }
         }
 
+        public User GetUserByEmail(string email)
+        {
+            var sql = @"Select *
+                        From [User]
+                        Where Email = @email";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var user = db.QueryFirstOrDefault<User>(sql, new {Email = email});
+                return user;
+            }
+        }
+
 
         public User AddUser(User userToAdd)
         {

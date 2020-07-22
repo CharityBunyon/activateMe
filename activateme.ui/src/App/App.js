@@ -53,7 +53,14 @@ class App extends React.Component {
           <Navbar authed={authed}/>
           <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/activateme/login" exact component={Login}/>
+              <Route 
+              path="/activateme/login"
+              render={() => (authed ? (
+                <Redirect to="/"/>
+              ):(
+                <Login/>
+              ))}/>
+              
               <Route path="/activateme/register" exact component={Register}/>
               <Route path="/activateme/dashboard" exact component={Dashboard}/> 
               <Route path="/activateme/exercises" exact component={Exercises}/>

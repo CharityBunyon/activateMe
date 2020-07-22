@@ -43,6 +43,18 @@ namespace activateMe.Controllers
             return Ok(result);
         }
 
+        [HttpGet("userEmail/{email}")]
+        public IActionResult GetUserByEmail(string email)
+        {
+            var result = _repository.GetUserByEmail(email);
+            if (result == null)
+            {
+                return NotFound("Sorry, but you don't have an account with us.");
+            }
+
+            return Ok(result);
+        }
+
         //Add New User
 
         [HttpPost("addUser")]

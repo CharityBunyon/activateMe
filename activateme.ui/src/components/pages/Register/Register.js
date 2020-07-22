@@ -12,7 +12,7 @@ class Register extends React.Component {
         firstname:'',
         lastname:'',
         email: '',
-        password:''
+        password:'',
     };
     
 
@@ -38,7 +38,7 @@ class Register extends React.Component {
    
 
     render() { 
-        const { email, password, firstname, lastname } = this.state;
+        const { email, password, firstname, lastname} = this.state;
 
         return ( 
             <div className='register-form'>
