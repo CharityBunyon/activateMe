@@ -17,6 +17,7 @@ import Exercises from '../components/pages/Exercises/Exercises';
 import Home from '../components/pages/Home/Home';
 import LogPage from './../components/pages/LogPage/LogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
+import Footer from '../components/shared/Footer/Footer';
 
 import './App.scss';
 
@@ -59,6 +60,7 @@ class App extends React.Component {
               <Route path="/activateme/recipes" exact component={Recipes}/>
               <Route path="/activateme/log" exact component={LogPage}/>
           </Switch>
+          <Footer />
         </Router>
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'firebase/auth';
 import logo from '../../../assets/activate-logo.png';
 import authData from '../../../helpers/data/authData';
 import { Link } from 'react-router-dom';
@@ -7,12 +8,12 @@ import './Register.scss';
 
 
 class Register extends React.Component {
-        state ={
-            firstname:'',
-            lastname:'',
-            email: '',
-            password:''
-        };
+    state ={
+        firstname:'',
+        lastname:'',
+        email: '',
+        password:''
+    };
     
 
     handleChange = (e) => {
@@ -22,15 +23,16 @@ class Register extends React.Component {
 
     registerEvent = (e) => {
         e.preventDefault();
-        const { firstname, lastname, email, password } = this.state;
+        const { email, password } = this.state;
         const userObj = {...this.state };
-        authData.registerUser(firstname, lastname, email, password)
+        authData.registerUser(email, password)
         .then(()=> {
             authData.addUserToDatabase(userObj);
+            console.error('register user works');
         })
         .catch((error) =>{
             console.error('There was an error registering a user');
-        })
+        });
     }
 
    
