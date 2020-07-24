@@ -1,38 +1,11 @@
 import React from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import authData from '../../../helpers/data/authData';
 import { Link } from 'react-router-dom';
 import plant from '../../../assets/plants-landing.jpg'
 import exercise from '../../../assets/exercise-landing.jpg'
 import './Home.scss';
 
 class Home extends React.Component {
-   state ={
-       user: {},
-       email: '',
-   }
-
-
-componentDidMount(){
-  firebase.auth().onAuthStateChanged((userObj) =>{
-      if(userObj) {
-          this.setState({email: userObj.email})
-          this.getUser();
-      }
-  })
-}
-
-getUser = () => {
-    const {email} = this.state;
-    authData.getUserByEmail(email)
-    .then((user) => this.setState({user}))
-    .catch((error) => console.error(error, 'error from getUser in home'));   
-}
-
     render() { 
-        const { authed } = this.props;
-        const { user } = this.state;
         return ( 
             <div>
                 <div className="pusher landing-img">
@@ -40,19 +13,7 @@ getUser = () => {
                         <div className="ui text container">
                             <h1 className="ui inverted header">ACTIVATE ME </h1>
                             <h2 className='slogan'>Muscle Powered by Plants</h2>
-                            {authed ? (
                                 <Link to='/activateme/login' className="ui huge black button">Get Started <i className="right arrow icon"></i></Link>
-                            ) : (
-                                null
-                            )}
-
-                            {authed ? (
-                                <Link to='/activateme/login' className="ui huge black button">Welcome <i className="right arrow icon"></i></Link>
-                            ) : (
-                                null
-                            )}    
-                                 
-         
                         </div>
                     </div> 
                 </div>
