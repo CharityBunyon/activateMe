@@ -15,9 +15,11 @@ import Register from '../components/pages/Register/Register';
 import Dashboard from '../components/pages/Dashboard/Dashboard';
 import Exercises from '../components/pages/Exercises/Exercises';
 import Home from '../components/pages/Home/Home';
-import LogPage from './../components/pages/LogPage/LogPage';
+import FoodLogPage from '../components/pages/FoodLogPage/FoodLogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
-import Footer from '../components/shared/Footer/Footer';
+import UserForm from '../components/shared/UserForm/UserForm';
+// import Footer from '../components/shared/Footer/Footer';
+import authData from '../helpers/data/authData';
 
 import './App.scss';
 
@@ -35,10 +37,17 @@ class App extends React.Component {
     this.removeListener = firebase.auth().onAuthStateChanged((userObj) => {
       if (userObj) {
         this.setState({ authed: true, userObj });
+        this.getUser(userObj.email);
       } else {
         this.setState({ authed: false });
       }
     });
+  }
+  
+  getUser = (userEmail) => {
+     authData.getUserByEmail(userEmail)
+     .then((user) => sessionStorage.setItem('userId', user.id))
+     .catch((error) => console.error(error, 'error from getUser in home'));   
   }
 
   componentWillUnmount() {
@@ -65,9 +74,10 @@ class App extends React.Component {
               <Route path="/activateme/dashboard" exact component={Dashboard}/> 
               <Route path="/activateme/exercises" exact component={Exercises}/>
               <Route path="/activateme/recipes" exact component={Recipes}/>
-              <Route path="/activateme/log" exact component={LogPage}/>
+              <Route path="/activateme/log" exact component={FoodLogPage}/>
+              <Route path="/activateme/updateUser" exact component={UserForm}/>
           </Switch>
-          <Footer />
+  
         </Router>
       </div>
     );

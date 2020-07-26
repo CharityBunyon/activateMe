@@ -72,8 +72,6 @@ class Login extends React.Component {
                     </div>
                     <div className="ui fluid large submit button teal" onClick={this.loginEvent}>Login</div>
                     </div>
-                
-                    <div className="ui error message"></div>
                 </form>
             
                 <div className="ui message">

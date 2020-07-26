@@ -28,19 +28,21 @@ namespace activateMe.DataAccess
             }
         }
 
-        public IEnumerable<FoodLogRepo> GetUserLogsById(int uid)
+        public IEnumerable<FoodLog> GetUserLogsById(int userId)
         {
             var sql = @"select * 
                         from Food
-                        where userId = @uid";
+                        where UserId = @userId";
 
-            var parameters = new { Uid = uid };
+            var parameters = new {UserId = userId};
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<FoodLogRepo>(sql, parameters);
+                return db.Query<FoodLog>(sql, parameters);
 
             }
         }
+
+
 
         public string DeleteLog(int id)
         {

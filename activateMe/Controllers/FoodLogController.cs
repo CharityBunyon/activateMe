@@ -28,10 +28,10 @@ namespace activateMe.Controllers
             return Ok(allFoods);
         }
 
-        [HttpGet("foodLogs/{uid}")]
-        public IActionResult GetUserFoodLogs(int uid)
+        [HttpGet("foodLogs/{userId}")]
+        public IActionResult GetUserFoodLogs(int userId)
         {
-            var foodLogs = _repository.GetUserLogsById(uid);
+            var foodLogs = _repository.GetUserLogsById(userId);
             if (foodLogs == null)
             {
                 return NotFound("Sorry, this user does have any food logs.");
