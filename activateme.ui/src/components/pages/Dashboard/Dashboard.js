@@ -1,18 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import authData from '../../../helpers/data/authData';
 import badgeData from '../../../helpers/data/badgeData';
 import BadgeCard from './../../shared/BadgeCard/BadgeCard';
-import './Dashboard.scss';
 
+import './Dashboard.scss';
 
 class Dashboard extends React.Component {
     state ={
         user: {},
         email: '',
-        badges: [],
-        
+        badges: [],   
     }
  
  
@@ -28,12 +28,8 @@ class Dashboard extends React.Component {
            this.getUser();
        }
      }
-   )
-   
+   ) 
 }
-
-
- 
 
 
  getUser = () => {
@@ -43,8 +39,11 @@ class Dashboard extends React.Component {
      .catch((error) => console.error(error, 'error from getUser in home'));   
  }
 
+
     render() { 
-        const {user, badges} = this.state;
+      
+       const {user, badges} = this.state;
+
         return ( 
             <div>
             <div className="ui grid container">
@@ -59,7 +58,7 @@ class Dashboard extends React.Component {
                         <p className='userinfo'>City: {user.city}</p>
                         <p className='userinfo'>State: {user.state}</p>
                         <p className='userinfo'>Member since: {user.dateJoined}</p>
-                        <button class="ui teal button">Edit</button>
+                        <Link to='/activateme/updateUser'>Edit</Link>
                 </div>
 
                 <div className='three wide column points-container'>
@@ -78,8 +77,8 @@ class Dashboard extends React.Component {
                     
                 </div> 
                 </div>
-
-
+          
+            
             </div>
 
          );

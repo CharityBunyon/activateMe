@@ -50,7 +50,7 @@ const getUserByEmail = (email) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
   })
 
-//  const getEmail = () => firebase.auth().currentUser.email;
+const updateUserInfo = (user) => axios.put(`${baseUrl}/update`, user);
 
     
     
@@ -59,5 +59,5 @@ const getUserByEmail = (email) => new Promise((resolve, reject) => {
   
   
   export default {
-    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail
+    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo
   };
