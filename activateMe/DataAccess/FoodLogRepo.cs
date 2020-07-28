@@ -100,5 +100,18 @@ namespace activateMe.DataAccess
             }
         }
 
+        public int GetUserPoints(int id)
+        {
+            var sql = @"select SUM(points) as points
+                        from Food
+                        where userId = @id";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new  { Id = id };
+                return db.QueryFirstOrDefault<int>(sql, parameters);
+            }
+        }
+
     }
 }

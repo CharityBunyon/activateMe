@@ -12,7 +12,8 @@ class Dashboard extends React.Component {
     state ={
         user: {},
         email: '',
-        badges: [],   
+        badges: [], 
+        points:'',
     }
  
  
