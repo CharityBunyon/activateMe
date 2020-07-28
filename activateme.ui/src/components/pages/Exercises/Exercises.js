@@ -21,8 +21,10 @@ class Recipes extends React.Component {
         return ( 
             <div>
                 <h1>Exercises Page</h1>
-                <div className=' ui grid'>
-                    { exercises.map((exercise) => <ExerciseCard key={exercise.id} exercise={exercise} />)}
+                <div className='ui grid container'>
+                    <div className=' ui grid'>
+                        { exercises.map((exercise) => <ExerciseCard key={exercise.id} exercise={exercise} />)}
+                    </div>
                 </div>
             </div>
          );
