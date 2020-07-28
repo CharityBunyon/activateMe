@@ -52,12 +52,12 @@ const getUserByEmail = (email) => new Promise((resolve, reject) => {
 
 const updateUserInfo = (user) => axios.put(`${baseUrl}/update`, user);
 
-    
+const getUserPoints = (id) => axios.get(`${baseUrl}/points/${id}`);
     
   
 
   
   
   export default {
-    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo
+    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo, getUserPoints
   };

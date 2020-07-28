@@ -10,5 +10,8 @@ const getFoodLogsById = (id) => new Promise((resolve, reject) => {
 const addFood = (foodToAdd) => axios.post(`${baseUrl}/foodToAdd`, foodToAdd);
 
 
-export default { getFoodLogsById, addFood};
+const deleteLog = (id) => axios.delete(`${baseUrl}/removeFoodLog/${id}`);
+
+
+export default { getFoodLogsById, addFood, deleteLog};
 

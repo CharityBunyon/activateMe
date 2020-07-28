@@ -3,8 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import foodLogData from '../../../helpers/data/foodLogData';
 import authData from '../../../helpers/data/authData';
-import LogCard from '../../shared/LogCard/LogCard';
+import FoodLogCard from '../../shared/FoodLogCard/FoodLogCard';
 import { Link } from 'react-router-dom';
+import { Grid, Button } from 'semantic-ui-react'
 import './FoodLogPage.scss';
 
 
@@ -13,12 +14,12 @@ class FoodLogPage extends React.Component {
         user: {},
         email: '',
         foodLogs: [],
+        userId: sessionStorage.getItem('userId'),
      }
 
 
      componentDidMount() {
-        const userId = sessionStorage.getItem('userId');
-        foodLogData.getFoodLogsById(userId)
+        foodLogData.getFoodLogsById(this.state.userId)
         .then((foodLogs) => {
             this.setState({foodLogs})
         })
@@ -33,19 +34,36 @@ class FoodLogPage extends React.Component {
         .catch((error) => console.error(error, 'error from getUser in home'));   
     }
 
-    
-
+    deleteLog = (id) => {
+        foodLogData.deleteLog(id)
+        .then(() => foodLogData.getFoodLogsById(this.state.userId)
+        )
+        .then((foodLogs) => {
+            this.setState({foodLogs})
+        })
+        .catch((error) => console.error(error, 'error from getting logs'));
+    }
 
     render() { 
         const {foodLogs} = this.state;
 
         return ( 
             <div>
-                <div>
-                    <Link to='/activateme/foodForm'>Add Food</Link>
+                <div className='ui container'>
+                    <Link to='/activateme/foodForm' className='ui large button teal ' >Add Food</Link>
                 </div>
                 <div>
-                    {foodLogs.map((foodLog) => <LogCard key={foodLog.id} food={foodLog} />)}
+                    <Grid columns={6} divided className='ui grid container'>
+                        <Grid.Row>
+                        <Grid.Column>NAME</Grid.Column>
+                        <Grid.Column>CATEGORY</Grid.Column>
+                        <Grid.Column>Quantity</Grid.Column>
+                        <Grid.Column>CALORIES</Grid.Column>
+                        <Grid.Column>POINTS</Grid.Column>
+                        <Grid.Column>DELETE</Grid.Column>
+                        </Grid.Row>
+                        {foodLogs.map((foodLog) => <FoodLogCard key={foodLog.id} food={foodLog} deleteLog={this.deleteLog}/>)}
+                    </Grid>
                 </div>
             </div>
          );

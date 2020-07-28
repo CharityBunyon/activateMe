@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Radio } from 'semantic-ui-react'
+import {Form, Button } from 'semantic-ui-react'
 import foodLogData from '../../../helpers/data/foodLogData';
 import './FoodForm.scss';
 
@@ -15,14 +15,15 @@ class FoodForm extends React.Component {
 
     
 
+    
     addFoodLog = (e) => {
          e.preventDefault();
          const foodToAdd = {
              Name: this.state.foodItem,
-             FoodTypeId: this.state.value,
-             Quantity: this.state.quantity,
-             Calories: this.state.calories,
-             UserId: this.state.user,
+             FoodTypeId: Number(this.state.value),
+             Quantity: Number(this.state.quantity),
+             Calories: Number(this.state.calories),
+             UserId: Number(this.state.user),
          };
          foodLogData.addFood(foodToAdd)
          .then(() => this.props.history.push('/activateme/log'))
@@ -50,10 +51,12 @@ class FoodForm extends React.Component {
         e.preventDefault();
         this.setState({ category: e.target.value });
     };
-    // handleChange = (e) => {
-    //     const {value, name } = e.target;
-    //     this.setState({ [name]: value}); //dynamically setting the state
-    // }
+    handleChange = (e) => {
+        const {value, name } = e.target;
+        this.setState({ [name]: value}); //dynamically setting the state
+    }
+
+    // handleChange = (e, { value }) => this.setState({ value })
     
     
 
@@ -95,64 +98,112 @@ class FoodForm extends React.Component {
                     required />
                 </Form.Field>
                 
-
-
                 <Form.Group inline>
-                <div className="inline fields">
-                   
-                    <label>Category</label>
-                    <Form.Field>
-                        <Radio
-                        label='Vegetable'
-                        name='category'
-                        value={parseInt('3')}
-                        checked={value  === '2'}
-                        onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <Radio
-                        label='Fruit'
-                        name='category'
-                      
-                        value={parseInt('2')}
-                        checked={value  === '2'}
-                        onChange={this.handleChange}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                    <Radio
-                        label='Whole Grains'
-                        name='category'
-                     
-                        value={parseInt('2')}
-                        checked={value  === '2'}
-                        onChange={this.handleChange}
-                    />
-                    </Form.Field>
-                    <Form.Field>
-                    <Radio
-                        label='Legumes'
-                        name='category'
-                   
-                        value={parseInt('3')}
-                        checked={value  === '2'}
-                        onChange={this.handleChange}
-                    />
-                    </Form.Field>
-                    <Form.Field>
-                    <Radio
-                        label='Nuts & Seeds'
-                        name='category' 
-                        value={parseInt('2')}
-                        checked={value  === '2'}
-                        onChange={this.handleChange}
-                    />
-                    </Form.Field> 
-                    </div>
-                    
-                    </Form.Group>
+                <label>Category</label>
+                <Form.Field
+                    label='Vegetable'
+                    control='input'
+                    type='radio'
+                    value='3'
+                    name='value'
+                    onChange={this.handleChange}
 
+                />
+                <Form.Field
+                    label='Fruit'
+                    control='input'
+                    type='radio'
+                    value= '2'
+                    name='value'
+                    onChange={this.handleChange}
+                />
+                <Form.Field
+                    label='Whole Grains'
+                    control='input'
+                    type='radio'
+                    value= '1'
+                    name='value'
+                    onChange={this.handleChange}
+                />
+                <Form.Field
+                    label='Legumes'
+                    control='input'
+                    type='radio'
+                    value= '3'
+                    name='value'
+                    onChange={this.handleChange}
+                />
+                <Form.Field
+                    label='Nuts & Seeds'
+                    control='input'
+                    type='radio'
+                    value= '2'
+                    name='value'
+                    onChange={this.handleChange}
+                />
+                </Form.Group>
+                <Button onClick={this.addFoodLog}>Add Food</Button>
+
+                {/* <Form.Group inline>
+                <label>Category</label>
+                <Form.Field
+                    control={Radio}
+                    label='Vegetable'
+                    value='3'
+                    checked={value === '3'}
+                    onChange={this.handleChange}
+                />
+                <Form.Field
+                    control={Radio}
+                    label='Fruit'
+                    value='2'
+                    checked={value === '2'}
+                    onChange={this.handleChange}
+                />
+                <Form.Field
+                    control={Radio}
+                    label='Whole Grains'
+                    value='1'
+                    checked={value === '1'}
+                    onChange={this.handleChange}
+                />
+               
+                </Form.Group> */}
+
+                {/* <Form.Group inline>
+                <label>Size</label>
+                    <Form.Radio
+                        label='Vegetable'
+                        value='3'
+                        checked={value === '3'}
+                        onChange={this.handleChange}
+                    />
+                    <Form.Radio
+                        label='Fruit'
+                        value='2'
+                        checked={value === '2'}
+                        onChange={this.handleChange}
+                    />
+                    <Form.Radio
+                        label='Whole Grains'
+                        value='1'
+                        checked={value === '1'}
+                        onChange={this.handleChange}
+                    />
+                    <Form.Radio
+                        label='Legumes'
+                        value='3'
+                        checked={value === '3'}
+                        onChange={this.handleChange}
+                    />
+                    <Form.Radio
+                        label='Nuts & Seeds'
+                        value='2'
+                        checked={value === '2'}
+                        onChange={this.handleChange}
+                    />
+                </Form.Group>
+                 */}
                 </Form>
             </div>
          
