@@ -13,15 +13,17 @@ class ExerciseCard extends React.Component {
         const {exercise} = this.props;
         
         return ( 
-            <Card>
-            <Image src={exercise.imageUrl} wrapped ui={false} alt={exercise.name}/>
-            <Card.Content>
-              <Card.Header>{exercise.name}</Card.Header>
-            </Card.Content>
-            <Card.Content extra>
-            <a href={exercise.link}>View</a>
-            </Card.Content>
-          </Card>
+            <div className='four wide column'>
+                <Card>
+                <Image src={exercise.imageUrl} wrapped ui={false} alt={exercise.name}/>
+                <Card.Content>
+                <Card.Header>{exercise.name}</Card.Header>
+                </Card.Content>
+                <Card.Content extra>
+                <a href={exercise.link}>View</a>
+                </Card.Content>
+            </Card>
+          </div>
          );
     }
 }
