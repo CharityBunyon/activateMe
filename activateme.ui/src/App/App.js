@@ -18,10 +18,12 @@ import Home from '../components/pages/Home/Home';
 import FoodLogPage from '../components/pages/FoodLogPage/FoodLogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
 import UserForm from '../components/shared/UserForm/UserForm';
+import FoodForm from './../components/pages/FoodForm/FoodForm';
 // import Footer from '../components/shared/Footer/Footer';
 import authData from '../helpers/data/authData';
 
 import './App.scss';
+
 
 
 
@@ -76,6 +78,7 @@ class App extends React.Component {
               <Route path="/activateme/recipes" exact component={Recipes}/>
               <Route path="/activateme/log" exact component={FoodLogPage}/>
               <Route path="/activateme/updateUser" exact component={UserForm}/>
+              <Route path="/activateme/foodForm" exact component={FoodForm}/>
           </Switch>
   
         </Router>
