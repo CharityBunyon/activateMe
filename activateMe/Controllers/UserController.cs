@@ -74,7 +74,7 @@ namespace activateMe.Controllers
        [HttpPut("update")]
         public IActionResult UpdateUser(User updatedUser)
         {
-            var existingUser = _repository.GetUserByEmail(updatedUser.Email);
+            var existingUser = _repository.GetUserById(updatedUser.Id);
 
             if (existingUser != null)
             {

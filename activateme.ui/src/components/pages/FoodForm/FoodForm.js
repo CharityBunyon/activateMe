@@ -143,67 +143,6 @@ class FoodForm extends React.Component {
                 />
                 </Form.Group>
                 <Button onClick={this.addFoodLog}>Add Food</Button>
-
-                {/* <Form.Group inline>
-                <label>Category</label>
-                <Form.Field
-                    control={Radio}
-                    label='Vegetable'
-                    value='3'
-                    checked={value === '3'}
-                    onChange={this.handleChange}
-                />
-                <Form.Field
-                    control={Radio}
-                    label='Fruit'
-                    value='2'
-                    checked={value === '2'}
-                    onChange={this.handleChange}
-                />
-                <Form.Field
-                    control={Radio}
-                    label='Whole Grains'
-                    value='1'
-                    checked={value === '1'}
-                    onChange={this.handleChange}
-                />
-               
-                </Form.Group> */}
-
-                {/* <Form.Group inline>
-                <label>Size</label>
-                    <Form.Radio
-                        label='Vegetable'
-                        value='3'
-                        checked={value === '3'}
-                        onChange={this.handleChange}
-                    />
-                    <Form.Radio
-                        label='Fruit'
-                        value='2'
-                        checked={value === '2'}
-                        onChange={this.handleChange}
-                    />
-                    <Form.Radio
-                        label='Whole Grains'
-                        value='1'
-                        checked={value === '1'}
-                        onChange={this.handleChange}
-                    />
-                    <Form.Radio
-                        label='Legumes'
-                        value='3'
-                        checked={value === '3'}
-                        onChange={this.handleChange}
-                    />
-                    <Form.Radio
-                        label='Nuts & Seeds'
-                        value='2'
-                        checked={value === '2'}
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
-                 */}
                 </Form>
             </div>
          
