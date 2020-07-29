@@ -25,5 +25,18 @@ namespace activateMe.Controllers
             var allBadges = _repository.GetAllBadges();
             return Ok(allBadges);
         }
+
+        [HttpGet("badges/{id}")]
+        public IActionResult GetEarnedBadges(int id)
+        {
+            var badges = _repository.RevealBadges(id);
+            if (badges == null)
+            {
+                return NotFound("Start Logging To Earn Badges");
+            }
+
+            return Ok(badges);
+        }
+
     }
 }

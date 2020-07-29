@@ -25,7 +25,14 @@ import authData from '../helpers/data/authData';
 import './App.scss';
 
 
-
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === true ? (
+      <Component {...props} {...rest} />
+  ) : (
+      <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+  ));
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
 firebaseConnection();
 
@@ -73,12 +80,12 @@ class App extends React.Component {
               ))}/>
               
               <Route path="/activateme/register" exact component={Register}/>
-              <Route path="/activateme/dashboard" exact component={Dashboard}/> 
+              <PrivateRoute path="/activateme/dashboard" exact component={Dashboard}/> 
               <Route path="/activateme/exercises" exact component={Exercises}/>
               <Route path="/activateme/recipes" exact component={Recipes}/>
-              <Route path="/activateme/log" exact component={FoodLogPage}/>
-              <Route path="/activateme/updateUser" exact component={UserForm}/>
-              <Route path="/activateme/foodForm" exact component={FoodForm}/>
+              <PrivateRoute path="/activateme/log" exact component={FoodLogPage}/>
+              <PrivateRoute path="/activateme/updateUser" exact component={UserForm}/>
+              <PrivateRoute path="/activateme/foodForm" exact component={FoodForm}/>
           </Switch>
   
         </Router>
