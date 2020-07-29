@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
         email: '',
         badges: [], 
         points:'',
+        userId: Number(sessionStorage.getItem('userId')),
     }
  
  
@@ -27,9 +28,11 @@ class Dashboard extends React.Component {
        if(userObj) {
            this.setState({email: userObj.email})
            this.getUser();
+           this.getUserPoints();
        }
      }
    ) 
+  
 }
 
 
@@ -37,13 +40,19 @@ class Dashboard extends React.Component {
      const {email} = this.state;
      authData.getUserByEmail(email)
      .then((user) => this.setState({user}))
-     .catch((error) => console.error(error, 'error from getUser in home'));   
+     .catch((error) => console.error(error, 'error from getUser in dashboard'))
+ }
+
+ getUserPoints = () => {
+     authData.getUserPoints(this.state.userId)
+     .then((points) => this.setState({points}))
+     .catch((error) => console.error(error, 'error from getPoints in dashboard'))
  }
 
 
     render() { 
       
-       const {user, badges} = this.state;
+       const {user, badges, points} = this.state;
 
         return ( 
             <div>
@@ -63,7 +72,7 @@ class Dashboard extends React.Component {
                 </div>
 
                 <div className='three wide column points-container'>
-                    <p>{user.points}</p>
+                    <p>{points}</p>
                     <p>Points Earned</p>   
                 </div>
              
