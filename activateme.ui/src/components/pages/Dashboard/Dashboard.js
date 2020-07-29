@@ -49,6 +49,8 @@ class Dashboard extends React.Component {
      .catch((error) => console.error(error, 'error from getPoints in dashboard'))
  }
 
+ 
+
 
     render() { 
       
@@ -61,10 +63,8 @@ class Dashboard extends React.Component {
                     <img src={user.imageUrl} className="ui image" alt='user-profile'/>
                 </div>
 
-                <div className="nine wide column">
+                <div className="eight wide column">
                     <h1>Welcome back, {user.firstname} {user.lastname}</h1>
-                    
-                        <p className='userinfo'>Email:{user.email}</p>
                         <p className='userinfo'>City: {user.city}</p>
                         <p className='userinfo'>State: {user.state}</p>
                         <p className='userinfo'>Member since: {user.dateJoined}</p>

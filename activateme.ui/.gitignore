@@ -3,6 +3,7 @@
 
 # dependencies
 /src/helpers/constants.json
+/src/helpers/data/imageData.js
 /package-lock.json
 /node_modules
 /.pnp
