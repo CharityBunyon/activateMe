@@ -52,9 +52,13 @@ const getUserByEmail = (email) => new Promise((resolve, reject) => {
 
 const updateUserInfo = (user) => axios.put(`${baseUrl}/update`, user);
 
-const getUserPoints = (id) => axios.get(`${baseUrl}/points/${id}`);
+// const getUserPoints = (id) => new Promiseaxios.get(`${baseUrl}/points/${id}`);
     
-  
+const getUserPoints = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/points/${id}`)
+  .then((result) => resolve(result.data))
+  .catch((error) => reject(error));
+});
 
   
   
