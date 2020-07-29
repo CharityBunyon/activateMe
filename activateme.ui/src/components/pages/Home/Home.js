@@ -6,6 +6,7 @@ import './Home.scss';
 
 class Home extends React.Component {
     render() { 
+   
         return ( 
             <div>
                 <div className="pusher landing-img">
@@ -13,7 +14,8 @@ class Home extends React.Component {
                         <div className="ui text container">
                             <h1 className="ui inverted header">ACTIVATE ME </h1>
                             <h2 className='slogan'>Muscle Powered by Plants</h2>
-                                <Link to='/activateme/login' className="ui huge black button">Get Started <i className="right arrow icon"></i></Link>
+                            <Link to='/activateme/login' className="ui huge black button">Get Started <i className="right arrow icon"></i></Link>
+                                
                         </div>
                     </div> 
                 </div>

@@ -27,10 +27,20 @@ namespace activateMe.DataAccess
             }
         }
 
-        //public Badges RevealBadges()
-        //{
-
-        //}
+        public IEnumerable<Badges> RevealBadges(int id)
+        {
+            var sql = @" select *
+                        from Badges b
+                        where (select sum(points) as points
+                        from food 
+                        where userId = @id) >= b.pointValue
+                        ";
+            var parameters = new {Id = id};
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                return db.Query<Badges>(sql, parameters);
+            }
+        }
     }
 
 

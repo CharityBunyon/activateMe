@@ -7,4 +7,10 @@ const getAllBadges = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllBadges }
+const getEarnedBadges = (id) => new Promise((resolve, reject) =>{
+    axios.get(`${baseUrl}/badges/${id}`)
+    .then((result) => resolve(result.data))
+    .catch((error) => reject(error));
+})
+
+export default { getAllBadges, getEarnedBadges }
