@@ -74,5 +74,31 @@ namespace activateMe.Controllers
             return Ok(points);
         }
 
+        [HttpGet("carbs/{id}")]
+
+        public IActionResult GetCarbs(int id)
+        {
+            var carbs = _repository.GetAllCarbsUser(id);
+
+            return Ok(carbs);
+        }
+
+        [HttpGet("fats/{id}")]
+
+        public IActionResult GetFats(int id)
+        {
+            var fats = _repository.GetAllFatsUser(id);
+
+            return Ok(fats);
+        }
+
+        [HttpGet("protein/{id}")]
+
+        public IActionResult GetProtein(int id)
+        {
+            var protein = _repository.GetAllProteinUser(id);
+
+            return Ok(protein);
+        }
     }
 }
