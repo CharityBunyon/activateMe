@@ -14,5 +14,8 @@ namespace activateMe.Models
         public int Calories { get; set; }
         public int Points { get; set; }
         public int UserId { get; set; }
+        public int Carbs { get; set; }
+        public int Fats { get; set; }
+        public int Protein { get; set; }
     }
 }

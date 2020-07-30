@@ -26,11 +26,15 @@ class FoodLogCard extends React.Component {
 
         return ( 
               <Grid.Row>
-                  <Grid.Column>{food.name}</Grid.Column>
-                  <Grid.Column>{food.foodTypeId}</Grid.Column>
-                  <Grid.Column>{food.quantity}</Grid.Column>
-                  <Grid.Column>{food.calories}</Grid.Column>
+                  <Grid.Column>
+                    <p>{food.name}</p>
+                    <p>{food.quantity}</p>
+                  </Grid.Column>
+                  <Grid.Column>{food.carbs}</Grid.Column>
+                  <Grid.Column>{food.fats}</Grid.Column>
+                  <Grid.Column>{food.protein}</Grid.Column>
                   <Grid.Column>{food.points}</Grid.Column>
+                  <Grid.Column>{food.calories}</Grid.Column>
                   <Grid.Column><button onClick={this.deleteFoodEvent}><FontAwesomeIcon icon={faTrash}/></button></Grid.Column>
               </Grid.Row>
          );

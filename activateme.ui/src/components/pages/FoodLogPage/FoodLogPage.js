@@ -53,13 +53,14 @@ class FoodLogPage extends React.Component {
                     <Link to='/activateme/foodForm' className='ui large button teal ' >Add Food</Link>
                 </div>
                 <div>
-                    <Grid columns={6} divided className='ui grid container'>
+                    <Grid columns={7} divided className='ui grid container'>
                         <Grid.Row>
-                        <Grid.Column>NAME</Grid.Column>
-                        <Grid.Column>CATEGORY</Grid.Column>
-                        <Grid.Column>Quantity</Grid.Column>
-                        <Grid.Column>CALORIES</Grid.Column>
+                        <Grid.Column>FOOD ITEM</Grid.Column>
+                        <Grid.Column>CARBS</Grid.Column>
+                        <Grid.Column>FATS</Grid.Column>
+                        <Grid.Column>PROTEINS</Grid.Column>
                         <Grid.Column>POINTS</Grid.Column>
+                        <Grid.Column>CALORIES</Grid.Column>
                         <Grid.Column>DELETE</Grid.Column>
                         </Grid.Row>
                         {foodLogs.map((foodLog) => <FoodLogCard key={foodLog.id} food={foodLog} deleteLog={this.deleteLog}/>)}
