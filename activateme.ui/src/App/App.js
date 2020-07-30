@@ -15,24 +15,26 @@ import Register from '../components/pages/Register/Register';
 import Dashboard from '../components/pages/Dashboard/Dashboard';
 import Exercises from '../components/pages/Exercises/Exercises';
 import Home from '../components/pages/Home/Home';
-import FoodLogPage from '../components/pages/FoodLogPage/FoodLogPage';
+import LogPage from '../components/pages/LogPage/LogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
 import UserForm from '../components/pages/UserForm/UserForm';
 import FoodForm from './../components/pages/FoodForm/FoodForm';
+import ExerciseForm from './../components/pages/ExerciseForm/ExerciseForm';
 // import Footer from '../components/shared/Footer/Footer';
 import authData from '../helpers/data/authData';
 
 import './App.scss';
 
 
-// const PrivateRoute = ({ component: Component, authed, ...rest }) => {
-//   const routeChecker = (props) => (authed === true ? (
-//       <Component {...props} {...rest} />
-//   ) : (
-//       <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-//   ));
-//   return <Route {...rest} render={(props) => routeChecker(props)} />;
-// };
+
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === true ? (
+      <Component {...props} {...rest} />
+  ) : (
+      <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+  ));
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
 firebaseConnection();
 
@@ -40,6 +42,7 @@ class App extends React.Component {
 
   state ={
     authed: false,
+    userObj: '',
   }
   
   componentDidMount() {
@@ -64,11 +67,11 @@ class App extends React.Component {
   }
   
   render() {
-    const {authed} = this.state;
+    const {authed, userObj} = this.state;
     return (
       <div>
         <Router>
-          <Navbar authed={authed}/>
+          <Navbar authed={authed} userObj={userObj}/>
           <Switch>
               <Route path="/" exact component={Home} />
               <Route 
@@ -81,11 +84,12 @@ class App extends React.Component {
               
               <Route path="/activateme/register" exact component={Register}/>
               <Route path="/activateme/dashboard" exact component={Dashboard}/> 
-              <Route path="/activateme/exercises" exact component={Exercises}/>
-              <Route path="/activateme/recipes" exact component={Recipes}/>
-              <Route path="/activateme/log" exact component={FoodLogPage}/>
-              <Route path="/activateme/updateUser" exact component={UserForm}/>
-              <Route path="/activateme/foodForm" exact component={FoodForm}/>
+              <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Exercises}/>
+              <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>
+              <PrivateRoute authed={authed} path="/activateme/log" exact component={LogPage}/>
+              <PrivateRoute authed={authed} path="/activateme/updateUser" exact component={UserForm}/>
+              <PrivateRoute authed={authed} path="/activateme/foodForm" exact component={FoodForm}/>
+              <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={ExerciseForm}/>
           </Switch>
   
         </Router>

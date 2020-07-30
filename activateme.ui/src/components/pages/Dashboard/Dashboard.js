@@ -60,7 +60,7 @@ class Dashboard extends React.Component {
 
         return ( 
             <div>
-            <div className="ui grid container">
+            <div className="ui grid container dash-container">
                 <div className="four wide column">
                     <img src={user.imageUrl} className="ui image" alt='user-profile'/>
                 </div>

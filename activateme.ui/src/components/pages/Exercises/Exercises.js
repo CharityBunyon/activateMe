@@ -3,7 +3,7 @@ import exerciseData from '../../../helpers/data/exerciseData';
 import ExerciseCard from '../../shared/ExerciseCard/ExerciseCard';
 import './Exercises.scss';
 
-class Recipes extends React.Component {
+class Exercise extends React.Component {
     state = { 
         exercises: [],
      }
@@ -31,4 +31,4 @@ class Recipes extends React.Component {
     }
 }
  
-export default Recipes;
+export default Exercise;

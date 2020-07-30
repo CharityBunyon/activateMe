@@ -1,0 +1,87 @@
+.log-image-container {
+    margin-bottom: 100px;
+ 
+}
+
+.food-container {
+    position: relative;
+    width: 75%;
+    margin-bottom: 50px;
+}
+
+.food-container .food-log-image{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.food-container .add-food-btn{
+    position: absolute;
+    bottom: 150px;
+    top: 10%;
+    left: -0%;
+    // transform: translate(-30%, -410%);
+    // -ms-transform: translate(-50%, -50%);
+    // background-color: #fff;
+    // color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-food-link {
+    color: #fff;
+}
+
+.add-food-link:hover {
+    color: #fff;
+}
+
+.add-content{
+    color: #fff;
+}
+
+.exercise-container{
+    position: relative;
+    width: 75%;
+    margin-bottom: 50px;
+}
+
+.exercise-container .exercise-log-image{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.exercise-container .add-exercise-btn {
+    position: absolute;
+    bottom: 150px;
+    top: 10%;
+    left: -0%;
+    // transform: translate(-50%, -50%);
+    // -ms-transform: translate(-50%, -50%);
+    // background-color: #555;
+    // color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-exercise-link {
+    color: #fff;
+}
+
+.add-exercise-link:hover {
+    color: #fff;
+}
+
+.food-logs{
+    padding-bottom: 100px;
+}
+
+
+
