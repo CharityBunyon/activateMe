@@ -7,4 +7,6 @@ const getAllExercises = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllExercises }
+
+
+export default { getAllExercises}

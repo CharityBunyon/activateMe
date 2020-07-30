@@ -61,7 +61,7 @@ namespace activateMe.DataAccess
         {
             var sql = @"insert into Food(name, foodTypeId, quantity, calories, points, carbs, fats, protein, userId)
                         output inserted. *
-                        values(@name, @foodTypeId, @quantity, @calories, @points, @carbs, @fats, @ protein, @userId )";
+                        values(@name, @foodTypeId, @quantity, @calories, @points, @carbs, @fats, @protein, @userId )";
 
             var multiplierQuery = @"select pointMultiplier
                                     from FoodCategory
@@ -113,6 +113,48 @@ namespace activateMe.DataAccess
             {
                 var parameters = new  { Id = id };
                 return db.QueryFirstOrDefault<int>(sql, parameters);
+            }
+        }
+
+        public int GetAllCarbsUser(int uid)
+        {
+            var sql = @"select SUM(carbs) as Carbs
+                        from Food
+                        where userId = @uid";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Uid = uid };
+                return db.QueryFirstOrDefault<int>(sql, parameters);
+
+            }
+        }
+
+        public int GetAllFatsUser(int uid)
+        {
+            var sql = @"select SUM(fats) as Fats
+                        from Food
+                        where userId = @uid";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Uid = uid };
+                return db.QueryFirstOrDefault<int>(sql, parameters);
+
+            }
+        }
+
+        public int GetAllProteinUser(int uid)
+        {
+            var sql = @"select SUM(protein) as Protein
+                        from Food
+                        where userId = @uid";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Uid = uid };
+                return db.QueryFirstOrDefault<int>(sql, parameters);
+
             }
         }
 

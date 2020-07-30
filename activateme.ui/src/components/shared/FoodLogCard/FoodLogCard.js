@@ -30,12 +30,12 @@ class FoodLogCard extends React.Component {
                     <p className='food-name'>{food.name.toLowerCase()}</p>
                     <p className='quantity-grams'>{food.quantity} grams</p>
                   </Grid.Column>
-                  <Grid.Column>{food.carbs}</Grid.Column>
-                  <Grid.Column>{food.fats}</Grid.Column>
-                  <Grid.Column>{food.protein}</Grid.Column>
-                  <Grid.Column>{food.points}</Grid.Column>
-                  <Grid.Column>{food.calories}</Grid.Column>
-                  <Grid.Column><button onClick={this.deleteFoodEvent}><FontAwesomeIcon icon={faTrash}/></button></Grid.Column>
+                  <Grid.Column className='center aligned'>{food.carbs}</Grid.Column>
+                  <Grid.Column className='center aligned'>{food.fats}</Grid.Column>
+                  <Grid.Column className='center aligned'>{food.protein}</Grid.Column>
+                  <Grid.Column className='center aligned'>{food.points}</Grid.Column>
+                  <Grid.Column className='center aligned'>{food.calories}</Grid.Column>
+                  <Grid.Column><FontAwesomeIcon onClick={this.deleteFoodEvent}icon={faTrash}/></Grid.Column>
               </Grid.Row>
          );
     }

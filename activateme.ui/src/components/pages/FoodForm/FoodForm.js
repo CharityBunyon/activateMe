@@ -90,7 +90,7 @@ class FoodForm extends React.Component {
 
         return ( 
             <div className='food-form-container ui container'>
-                <h1 className='food-form-name'>Create Food</h1>
+                <h1 className='food-form-name'>Log Food</h1>
                 <div>
                 <Form>
                 <Form.Field width={8}>

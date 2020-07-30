@@ -28,9 +28,9 @@ class ExerciseLogCard extends React.Component {
                     <p className='food-name'>{exercise.name.toLowerCase()}</p>
                     <p className='quantity-grams'>{exercise.time} minutes</p>
                   </Grid.Column>
-                  <Grid.Column>{exercise.calories}</Grid.Column>
-                  <Grid.Column>{exercise.points}</Grid.Column>
-                  <Grid.Column><button onClick={this.deleteExerciseEvent}><FontAwesomeIcon icon={faTrash}/></button></Grid.Column>
+                  <Grid.Column className='center aligned'>{exercise.calories}</Grid.Column>
+                  <Grid.Column className='center aligned'>{exercise.points}</Grid.Column>
+                  <Grid.Column><FontAwesomeIcon onClick={this.deleteExerciseEvent} icon={faTrash}/></Grid.Column>
               </Grid.Row>
          );
     }

@@ -83,5 +83,60 @@
     padding-bottom: 100px;
 }
 
+.flame-img {
+    width: 20px;
+}
 
+.cal-eaten {
+    color: red;
+    font-size: 20px;
+    margin-right: 5px;
+    font-weight: bold;
+}
 
+.cal-burned {
+    color: green;
+    font-size: 20px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.equals {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.minus {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.just-cal-burned {
+    font-size: 20px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.progress{
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+
+.emoji-macro{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.macro-container {
+    margin: 50px 0px;
+}
+
+.macro-totals {
+    font-size: 20px;
+    font-weight: bold;
+}
