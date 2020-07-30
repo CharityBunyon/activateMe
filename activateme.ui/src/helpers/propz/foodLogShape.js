@@ -8,6 +8,9 @@ const foodLogShape = PropTypes.shape({
     points: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired,
     foodTypeId: PropTypes.number.isRequired,
+    carbs: PropTypes.number.isRequired,
+    fats: PropTypes.number.isRequired,
+    protein: PropTypes.number.isRequired,
 })
 
 export default { foodLogShape };

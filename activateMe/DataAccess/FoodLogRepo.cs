@@ -59,9 +59,9 @@ namespace activateMe.DataAccess
 
         public FoodLog AddFoodLog(FoodLog foodToAdd)
         {
-            var sql = @"insert into Food(name, foodTypeId, quantity, calories, points, userId)
+            var sql = @"insert into Food(name, foodTypeId, quantity, calories, points, carbs, fats, protein, userId)
                         output inserted. *
-                        values(@name, @foodTypeId, @quantity, @calories, @points, @userId )";
+                        values(@name, @foodTypeId, @quantity, @calories, @points, @carbs, @fats, @ protein, @userId )";
 
             var multiplierQuery = @"select pointMultiplier
                                     from FoodCategory
@@ -77,6 +77,9 @@ namespace activateMe.DataAccess
                     foodToAdd.FoodTypeId,
                     foodToAdd.Quantity,
                     foodToAdd.Calories,
+                    foodToAdd.Carbs,
+                    foodToAdd.Protein,
+                    foodToAdd.Fats,
                     foodToAdd.UserId,
                     points = points
                 };

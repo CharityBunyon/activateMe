@@ -1,6 +1,10 @@
 import React from 'react';
-import {Form, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import {Form, Button, Grid } from 'semantic-ui-react'
 import foodLogData from '../../../helpers/data/foodLogData';
+import bread from '../../../assets/carbs.png';
+import fat from '../../../assets/oil.png';
+import pro from '../../../assets/protein.png';
 import './FoodForm.scss';
 
 
@@ -10,6 +14,9 @@ class FoodForm extends React.Component {
         quantity: '',
         calories: '',
         value: '',
+        carbs: '',
+        fats: '',
+        protein: '',
         user: sessionStorage.getItem('userId'),
      }
 
@@ -23,6 +30,9 @@ class FoodForm extends React.Component {
              FoodTypeId: Number(this.state.value),
              Quantity: Number(this.state.quantity),
              Calories: Number(this.state.calories),
+             Carbs: Number(this.state.carbs),
+             Fats: Number(this.state.fats),
+             Protein: Number(this.state.protein),
              UserId: Number(this.state.user),
          };
          foodLogData.addFood(foodToAdd)
@@ -51,23 +61,40 @@ class FoodForm extends React.Component {
         e.preventDefault();
         this.setState({ category: e.target.value });
     };
+
+    proteinChange = (e) => {
+        e.preventDefault();
+        this.setState({ protein: e.target.value });
+    };
+
+    fatsChange = (e) => {
+        e.preventDefault();
+        this.setState({ fats: e.target.value });
+    };
+
+    carbsChange = (e) => {
+        e.preventDefault();
+        this.setState({ carbs: e.target.value });
+    };
+
     handleChange = (e) => {
         const {value, name } = e.target;
         this.setState({ [name]: value}); //dynamically setting the state
     }
 
-    // handleChange = (e, { value }) => this.setState({ value })
     
     
 
     render() { 
-        const { value, foodItem, quantity, calories } = this.state;
+        const { protein, fats, carbs, foodItem, quantity, calories } = this.state;
 
         return ( 
             <div className='food-form-container ui container'>
+                <h1 className='food-form-name'>Create Food</h1>
+                <div>
                 <Form>
-                <Form.Field>
-                    <label>Food Item</label>
+                <Form.Field width={8}>
+                    <label id='weight'>Food Item</label>
                     <input 
                     type='text' 
                     placeholder='Food item' 
@@ -77,8 +104,8 @@ class FoodForm extends React.Component {
                     />
                 </Form.Field>
 
-                <Form.Field>
-                    <label>Quantity (grams)</label>
+                <Form.Field width={8}>
+                    <label id='weight'>Quantity (grams)</label>
                     <input 
                     type='text' 
                     placeholder='Quantity'
@@ -88,8 +115,8 @@ class FoodForm extends React.Component {
                     />
                 </Form.Field>
 
-                <Form.Field>
-                    <label>Calories</label>
+                <Form.Field width={8}>
+                    <label id='weight'>Calories</label>
                     <input 
                     type='text' 
                     placeholder='Calories'
@@ -99,7 +126,7 @@ class FoodForm extends React.Component {
                 </Form.Field>
                 
                 <Form.Group inline>
-                <label>Category</label>
+                <label id='weight'>Category:</label>
                 <Form.Field
                     label='Vegetable'
                     control='input'
@@ -142,11 +169,74 @@ class FoodForm extends React.Component {
                     onChange={this.handleChange}
                 />
                 </Form.Group>
-                <Button onClick={this.addFoodLog}>Add Food</Button>
+
+                <span className='CreateFoodView-nutrition-separator'>NUTRITION</span>
+
+                <Form.Field width={8}>
+                    <label id='labels'>Carbohydrates</label>
+                    <Grid divided='vertically'>
+                        <Grid.Row columns={2}>
+                            <Grid.Column width={2}>
+                                <img src={bread} alt='bread' className='emoji'/>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <input
+                                type='text' 
+                                placeholder='50g'
+                                value={carbs}
+                                onChange={this.carbsChange}
+                                required />
+                            </Grid.Column>
+                    </Grid.Row>
+                    </Grid>
+                </Form.Field>
+
+                <Form.Field width={8}>
+                    <label id='labels'>Fat</label>
+                    <Grid divided='vertically'>
+                        <Grid.Row columns={2}>
+                            <Grid.Column width={2}>
+                                <img src={fat} alt='fat' className='emoji'/>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <input
+                                type='text' 
+                                placeholder='16g'
+                                value={fats}
+                                onChange={this.fatsChange}
+                                required />
+                            </Grid.Column>
+                    </Grid.Row>
+                    </Grid>
+                </Form.Field>
+
+
+                <Form.Field width={8}>
+                    <label id='labels'>Protein</label>
+                    <Grid divided='vertically'>
+                        <Grid.Row columns={2}>
+                            <Grid.Column width={2}>
+                                <img src={pro} alt='protein' className='emoji'/>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <input
+                                type='text' 
+                                placeholder='33g'
+                                value={protein}
+                                onChange={this.proteinChange}
+                                required />
+                            </Grid.Column>
+                    </Grid.Row>
+                    </Grid>
+                </Form.Field>
+
+
+                <Button className='ui large submit button teal' onClick={this.addFoodLog}>Add Food</Button>
+                <Link to='/activateme/log' className='cancel-link'>Cancel</Link>
                 </Form>
-            </div>
+                </div>
          
-        
+            </div>
 
 
          );

@@ -1,0 +1,62 @@
+.CreateFoodView-nutrition-separator {
+    color: teal;
+	display: block;
+	margin: 50px 0 26px 80px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.CreateFoodView-nutrition-separator:before {
+	display: block;
+	width: 70px;
+	content: "";
+	border-top: 3px solid #003300;
+	position: relative;
+	top: 11px;
+	right: 78px;
+}
+
+.CreateFoodView-nutrition-separator:after {
+	display: block;
+	width: 90%;
+	content: "";
+	border-top: 3px solid #003300;
+	position: relative;
+	bottom: 13px;
+	left: 90px;
+}
+
+.cancel-link {
+    color: red;
+    margin-left: 20px;
+}
+
+.cancel-link:hover {
+    color: red;
+    text-decoration: underline;
+    margin-left: 20px;
+}
+
+.emoji {
+    width: 25px;
+    height: 25px;
+}
+
+#labels {
+    padding-left: 60px;
+    font-size: 15px;
+}
+
+.food-form-name{
+    margin-bottom: 30px;
+    color: teal;
+}
+
+#weight{
+    font-size: 15px;
+    margin-right: 50px;
+}
+
+.cat-types {
+    color: teal;
+}
