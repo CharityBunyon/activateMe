@@ -17,26 +17,26 @@ class Navbar extends React.Component {
         const { authed } = this.props;
     
         return ( 
-            <div className="ui grid large top secondary menu navbar">
+            <div className="ui top secondary menu">
                
-                <Link className="item nav-link" to="/">
+                <Link className="item nav-link" to="/"  id='hover'>
                     <img src={logo} alt="activateMeLog"/>
                 </Link>
               
                 {authed ? (
-                    <Link className="item nav-link" to="/activateme/dashboard">Dashboard</Link>    
+                    <Link className="item  nav-link" id='hover' to="/activateme/dashboard">Dashboard</Link>    
                 ): 
                 (null)}
                  {authed ? (
-                    <Link className="item nav-link" to="/activateme/log">Log</Link>
+                    <Link className="item nav-link"  id='hover' to="/activateme/log">Log</Link>
                 ): 
                 (null)}
                  {authed ? (
-                    <Link className="item nav-link" to="/activateme/recipes">Recipes</Link>  
+                    <Link className="item nav-link"  id='hover' to="/activateme/recipes">Recipes</Link>  
                 ): 
                 (null)}
                  {authed ? (
-                    <Link className="item nav-link" to="/activateme/exercises">Exercises</Link>  
+                    <Link className="item nav-link"  id='hover' to="/activateme/exercises">Exercises</Link>  
                 ): 
                 (null)}
                  

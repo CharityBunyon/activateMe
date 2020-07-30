@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ExerciseShape from '../../../helpers/propz/exerciseShape';
+import ExerciseShape from '../../../helpers/propz/recipeShape';
 import { Card, Image, } from 'semantic-ui-react'
 import './ExerciseCard.scss';
 

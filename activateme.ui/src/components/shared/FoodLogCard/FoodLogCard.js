@@ -27,8 +27,8 @@ class FoodLogCard extends React.Component {
         return ( 
               <Grid.Row>
                   <Grid.Column>
-                    <p>{food.name}</p>
-                    <p>{food.quantity}</p>
+                    <p className='food-name'>{food.name.toLowerCase()}</p>
+                    <p className='quantity-grams'>{food.quantity} grams</p>
                   </Grid.Column>
                   <Grid.Column>{food.carbs}</Grid.Column>
                   <Grid.Column>{food.fats}</Grid.Column>
