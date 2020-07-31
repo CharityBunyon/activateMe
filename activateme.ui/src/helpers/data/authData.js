@@ -60,8 +60,14 @@ const getUserPoints = (id) => new Promise((resolve, reject) => {
   .catch((error) => reject(error));
 });
 
+const getExercisePoints = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/exercisePoints/${id}`)
+  .then((result) => resolve(result.data))
+  .catch((error) => reject(error));
+});
+
   
   
   export default {
-    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo, getUserPoints
+    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo, getUserPoints, getExercisePoints
   };

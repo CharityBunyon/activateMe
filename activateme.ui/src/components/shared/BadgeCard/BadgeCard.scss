@@ -5,3 +5,8 @@
 .hide {
     opacity: 0 ;
 }
+
+.ui.cards>.card {
+    box-shadow: none;
+    border: none;
+}

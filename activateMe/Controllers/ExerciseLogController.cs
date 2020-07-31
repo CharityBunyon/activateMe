@@ -65,6 +65,14 @@ namespace activateMe.Controllers
             return Ok(calories);
         }
 
+        [HttpGet("exercisePoints/{id}")]
+
+        public IActionResult GetExercisePoints(int id)
+        {
+            var points = _repository.GetExercisePoints(id);
+
+            return Ok(points);
+        }
 
     }
 }
