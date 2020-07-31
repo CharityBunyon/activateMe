@@ -83,19 +83,22 @@ class UserForm extends React.Component {
 
         return ( 
             <div className='ui container'>
+              <h1 className='food-form-name'>Edit Profile Info</h1>
                 <Form>
                 <div>
-                <p>Upload Image</p>
+                <p><strong>Upload Image</strong></p>
                 {image && (<img className='uploadedImg' src={imageUrl} alt={imageUrl}/>)}
+                <Form.Field width={8}>
                 <FileUploader
                     accepts='image/*'
                     name='image'
                     storageRef={firebase.storage().ref('userImage/')}
                     onUploadSuccess={this.handleUploadSuccess}
-                    className='uploadFileArea'
-                /> 
+                    
+                />
+                </Form.Field>
                 </div>
-                <Form.Field>
+                <Form.Field width={8}>
                     <label>Firstname</label>
                     <input 
                     type='text' 
@@ -105,7 +108,7 @@ class UserForm extends React.Component {
                     required
                     />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field width={8}>
                     <label>Lastname</label>
                     <input 
                     type='text' 
@@ -115,7 +118,7 @@ class UserForm extends React.Component {
                     required
                     />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field width={8}>
                     <label>Email</label>
                     <input 
                     type='text' 
@@ -125,7 +128,7 @@ class UserForm extends React.Component {
                     required
                     />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field  width={8}>
                     <label>City</label>
                     <input 
                     type='text' 
@@ -135,7 +138,7 @@ class UserForm extends React.Component {
                     required
                     />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field width={8}>
                     <label>State</label>
                     <input 
                     type='text' 
@@ -145,7 +148,7 @@ class UserForm extends React.Component {
                     required
                     />
                 </Form.Field>
-                <Button onClick={this.editUserEvent}>Add Food</Button>
+                <Button className='ui large submit button teal' onClick={this.editUserEvent}>Edit User</Button>
                 </Form>
             </div>
          );

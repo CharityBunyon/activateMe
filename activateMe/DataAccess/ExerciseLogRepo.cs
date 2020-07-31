@@ -96,5 +96,18 @@ namespace activateMe.DataAccess
 
             }
         }
+
+        public int GetExercisePoints(int id)
+        {
+            var sql = @"select SUM(points) as points
+                        from Exercise
+                        where userId = @id";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Id = id };
+                return db.QueryFirstOrDefault<int>(sql, parameters);
+            }
+        }
     }
 }
