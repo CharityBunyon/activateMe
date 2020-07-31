@@ -17,7 +17,7 @@ import Exercises from '../components/pages/Exercises/Exercises';
 import Home from '../components/pages/Home/Home';
 import LogPage from '../components/pages/LogPage/LogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
-import UserForm from '../components/pages/UserForm/UserForm';
+// import UserForm from '../components/pages/UserForm/UserForm';
 import FoodForm from './../components/pages/FoodForm/FoodForm';
 import ExerciseForm from './../components/pages/ExerciseForm/ExerciseForm';
 // import Footer from '../components/shared/Footer/Footer';
@@ -87,7 +87,7 @@ class App extends React.Component {
               <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Exercises}/>
               <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>
               <PrivateRoute authed={authed} path="/activateme/log" exact component={LogPage}/>
-              <PrivateRoute authed={authed} path="/activateme/updateUser" exact component={UserForm}/>
+              {/* <PrivateRoute authed={authed} path="/activateme/updateUser" exact component={UserForm}/> */}
               <PrivateRoute authed={authed} path="/activateme/foodForm" exact component={FoodForm}/>
               <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={ExerciseForm}/>
           </Switch>
