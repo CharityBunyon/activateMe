@@ -14,15 +14,14 @@ class RecipeCard extends React.Component {
         
         return ( 
             <div className='four wide column'>
-                <Card>
-                <Image src={recipe.imageUrl} wrapped ui={false} alt={recipe.name}/>
-                <Card.Content>
-                <Card.Header>{recipe.name}</Card.Header>
-                </Card.Content>
-                <Card.Content extra>
-                <a href={recipe.link}>View</a>
-                </Card.Content>
-            </Card>
+                 <a href={recipe.link}>
+                    <Card>
+                    <Image src={recipe.imageUrl} wrapped ui={false} alt={recipe.name}/>
+                    <Card.Content>
+                    <Card.Header className='ui center aligned grid'>{recipe.name}</Card.Header>
+                    </Card.Content>
+                    </Card>
+                </a>
           </div>
          );
     }
