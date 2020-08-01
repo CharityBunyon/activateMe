@@ -1,6 +1,7 @@
 import React from 'react';
 import recipeData from '../../../helpers/data/recipeData';
 import RecipeCard from '../../shared/RecipeCard/RecipeCard';
+import recipePageImg from '../../../assets/food-log.jpg';
 import './Recipes.scss';
 
 class Recipes extends React.Component {
@@ -20,8 +21,9 @@ class Recipes extends React.Component {
         const { recipes } = this.state;
         return ( 
             <div>
-                <h1>Recipes Page</h1>
+                <h1 className='ui center aligned grid recipe-title'>Feed Your Soul With Some Plant Based Recipes</h1>
                 <div className='ui grid container'>
+                   
                     <div className=' ui grid'>
                         {recipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)}
                     </div>

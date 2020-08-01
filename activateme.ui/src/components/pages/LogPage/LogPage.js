@@ -115,6 +115,7 @@ class FoodLogPage extends React.Component {
         return ( 
             <div>
                 <div className='ui container log-image-container'>
+                <h1 className='ui center aligned grid recipe-title'>Start Logging To Earn Badges!</h1>
                     <Grid divided='vertically center aligned'>
                         <Grid.Row >
                             <Grid.Column className='food-container' width={8} >
