@@ -116,11 +116,11 @@ class Dashboard extends React.Component {
 
                     <div className='ui grid container'>
                         <Grid>
-                            <Grid.Row>
+                            <Grid.Row className='badge-title'>
                             <Grid.Column  width={14}><h1 className='four wide column'>Earned Badges</h1></Grid.Column>
                             
                             <Grid.Column  width={2}><Popup
-                                className='one wide column'
+                                className='one wide column]'
                                 trigger= {<FontAwesomeIcon icon={faQuestionCircle} id='question-icon'/>}
                                 content="Start logging some plant-based foods to earn badges! Click Log in the navbar to get started!"
                                 basic
@@ -128,8 +128,10 @@ class Dashboard extends React.Component {
                             </Grid.Row>
                         </Grid>
             
-                        <div className='badge-container ui grid'>
-                            {badges.map((badge) => <BadgeCard key={badge.badgeId} badge={badge} />)}    
+                        <div className='badge-container ui grid container'>
+      
+                            {badges.map((badge) => <BadgeCard key={badge.badgeId} badge={badge} />)} 
+                      
                         </div>      
                     </div>
           

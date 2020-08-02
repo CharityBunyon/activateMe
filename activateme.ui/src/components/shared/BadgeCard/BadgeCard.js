@@ -12,13 +12,11 @@ class BadgeCard extends React.Component {
     render() { 
         const {badge} = this.props;
         return (
-            <div className='four wide column'>
+            <div className='five wide column'>
                 <div className="badge-image">
                     <img src={badge.imageUrl} alt={badge.name}/>
                 </div>
-                {/* <div className="extra content">
-                    <p>{badge.pointValue} Points</p>
-                </div> */}
+                
             </div>
          );
     }
