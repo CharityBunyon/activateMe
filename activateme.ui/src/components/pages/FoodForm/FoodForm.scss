@@ -60,3 +60,14 @@
 .cat-types {
     color: teal;
 }
+
+.food-form-container{
+    background-image: url("../../../assets/sarah-boudreau-q9a_yoIyp5w-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }

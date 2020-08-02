@@ -3,6 +3,7 @@ import FileUploader from 'react-firebase-file-uploader';
 import authData from '../../../helpers/data/authData';
 import firebase from 'firebase';
 import {Form, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 import config from '../../../helpers/data/imageData';
 
 import './UserForm.scss';
@@ -128,7 +129,7 @@ class UserForm extends React.Component {
                   <input 
                   id='whoa'
                   type='text' 
-                  placeholder='Email' 
+                  placeholder='Email'
                   value={email}
                   onChange={this.emailChange}
                   required
@@ -157,6 +158,7 @@ class UserForm extends React.Component {
                   />
               </Form.Field>
               <Button className='ui large submit button teal' onClick={this.editUserEvent}>Edit User</Button>
+              <Link to='/activateme/dashboard' className='cancel-link'>Cancel</Link>
               </Form>
           </div>
         </div>

@@ -54,84 +54,89 @@ class ExerciseForm extends React.Component {
         const {name, time, calories } = this.state;
 
         return ( 
-            <div className='food-form-container ui container'>
-                <h1 className='food-form-name'>Log Activity</h1>
-                <div>
-                <Form>
-                <Form.Field width={8}>
-                    <label id='weight'>Activity Name</label>
-                    <input 
-                    type='text' 
-                    placeholder='Yoga' 
-                    value={name}
-                    onChange={this.nameChange}
-                    required
+            <div className='exercise-form-background'>
+                <div className='ui container'>
+                    <h1 className='food-form-name'>Log Activity</h1>
+                    <div>
+                    <Form>
+                    <Form.Field width={8}>
+                        <label id='weight'>Activity Name</label>
+                        <input
+                         id='whoa'
+                        type='text' 
+                        placeholder='Yoga' 
+                        value={name}
+                        onChange={this.nameChange}
+                        required
+                        />
+                    </Form.Field>
+
+                    <Form.Field width={8}>
+                        <label id='weight'>Duration (minutes)</label>
+                        <input
+                         id='whoa' 
+                        type='text' 
+                        placeholder='60'
+                        value={time}
+                        onChange={this.timeChange}
+                        required 
+                        />
+                    </Form.Field>
+
+                    <Form.Field width={8}>
+                        <label id='weight'>Calories</label>
+                        <input
+                        id='whoa'
+                        type='text' 
+                        placeholder='245'
+                        value={calories}
+                        onChange={this.caloriesChange}
+                        required />
+                    </Form.Field>
+                    
+                    <Form.Group inline>
+                    <label id='weight'>Category:</label>
+                    <Form.Field
+                        label='Endurance'
+                        control='input'
+                        type='radio'
+                        value='3'
+                        name='value'
+                        onChange={this.handleChange}
+
                     />
-                </Form.Field>
-
-                <Form.Field width={8}>
-                    <label id='weight'>Duration (minutes)</label>
-                    <input 
-                    type='text' 
-                    placeholder='60'
-                    value={time}
-                    onChange={this.timeChange}
-                    required 
+                    <Form.Field
+                        label='Strength'
+                        control='input'
+                        type='radio'
+                        value= '3'
+                        name='value'
+                        onChange={this.handleChange}
                     />
-                </Form.Field>
-
-                <Form.Field width={8}>
-                    <label id='weight'>Calories</label>
-                    <input 
-                    type='text' 
-                    placeholder='245'
-                    value={calories}
-                    onChange={this.caloriesChange}
-                    required />
-                </Form.Field>
-                
-                <Form.Group inline>
-                <label id='weight'>Category:</label>
-                <Form.Field
-                    label='Endurance'
-                    control='input'
-                    type='radio'
-                    value='3'
-                    name='value'
-                    onChange={this.handleChange}
-
-                />
-                <Form.Field
-                    label='Strength'
-                    control='input'
-                    type='radio'
-                    value= '3'
-                    name='value'
-                    onChange={this.handleChange}
-                />
-                <Form.Field
-                    label='Flexibility'
-                    control='input'
-                    type='radio'
-                    value= '2'
-                    name='value'
-                    onChange={this.handleChange}
-                />
-                <Form.Field
-                    label='Balance'
-                    control='input'
-                    type='radio'
-                    value= '1'
-                    name='value'
-                    onChange={this.handleChange}
-                />
-                </Form.Group>
+                    <Form.Field
+                        label='Flexibility'
+                        control='input'
+                        type='radio'
+                        value= '2'
+                        name='value'
+                        onChange={this.handleChange}
+                    />
+                    <Form.Field
+                        label='Balance'
+                        control='input'
+                        type='radio'
+                        value= '1'
+                        name='value'
+                        onChange={this.handleChange}
+                    />
+                    </Form.Group>
 
 
-                <Button className='ui large submit button teal' onClick={this.addExerciseLog}>Add Activity</Button>
-                <Link to='/activateme/log' className='cancel-link'>Cancel</Link>
-                </Form>
-                </div>
+                    <Button className='ui large submit button teal' onClick={this.addExerciseLog}>Add Activity</Button>
+                    <Link to='/activateme/log' className='cancel-link'>Cancel</Link>
+                    </Form>
+                    </div>
+            </div>
          </div>
          );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Image,Popup, Grid, Card, Rating } from 'semantic-ui-react'
 import 'firebase/auth';
 import foodLogData from '../../../helpers/data/foodLogData';
 import exerciseLogData from '../../../helpers/data/exerciseLogData';
@@ -7,7 +7,6 @@ import authData from '../../../helpers/data/authData';
 import FoodLogCard from '../../shared/FoodLogCard/FoodLogCard';
 import ExerciseLogCard from '../../shared/ExerciseLogCard/ExerciseLogCard';
 import { Link } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react'
 import flame from '../../../assets/flame.png';
 import bread from '../../../assets/carbs.png';
 import fat from '../../../assets/oil.png';
@@ -146,11 +145,41 @@ class FoodLogPage extends React.Component {
                     <Grid columns={7} className='ui grid container'>
                         <Grid.Row>
                         <Grid.Column><strong>FOOD ITEM</strong></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={bread} alt='carbs' className='emoji'/></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={fat} alt='fats' className='emoji'/></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={pro} alt='protein' className='emoji'/></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={awards} alt='earned points' className='emoji'/></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={calories} alt='calories from food item' className='emoji'/></Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={bread} alt='carbs' className='emoji'/>}
+                            content='Carbs'
+                            position='top center'
+                            />
+                        </Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={fat} alt='fats' className='emoji'/>}
+                            content='Fats'
+                            position='top center'
+                            />
+                        </Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={pro} alt='protein' className='emoji'/>}
+                            content='Protein'
+                            position='top center'
+                            />
+                        </Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={awards} alt='earned points' className='emoji'/>}
+                            content='Points Earned'
+                            position='top center'
+                            />
+                        </Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={calories} alt='calories from food item' className='emoji'/>}
+                            content='Calories'
+                            position='top center'
+                            />
+                        </Grid.Column>
                         <Grid.Column><strong>DELETE</strong></Grid.Column>
                         </Grid.Row>
                         <hr className='ui container'/>
@@ -170,8 +199,20 @@ class FoodLogPage extends React.Component {
                     <Grid columns={5} className='ui grid container'>
                     <Grid.Row>
                         <Grid.Column><strong>ACTIVITY</strong></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={calories} alt='calories from food item' className='emoji'/></Grid.Column>
-                        <Grid.Column className='center aligned'><img src={awards} alt='earned points' className='emoji'/></Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={calories} alt='calories from food item' className='emoji'/>}
+                            content='Calories'
+                            position='top center'
+                            />
+                        </Grid.Column>
+                        <Grid.Column className='center aligned'>
+                            <Popup
+                            trigger={<img src={awards} alt='earned points' className='emoji'/>}
+                            content='Points'
+                            position='top center'
+                            />
+                        </Grid.Column>
                         <Grid.Column><strong>DELETE</strong></Grid.Column>
                     </Grid.Row>
                         <hr className='ui container'/>

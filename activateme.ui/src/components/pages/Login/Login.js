@@ -54,6 +54,7 @@ class Login extends React.Component {
                         placeholder="E-mail address"
                         value={email}
                         onChange={this.emailChange}
+                        error
                         required>
                         </input>
                     </div>

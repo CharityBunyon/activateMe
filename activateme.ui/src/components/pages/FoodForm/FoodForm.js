@@ -89,13 +89,15 @@ class FoodForm extends React.Component {
         const { protein, fats, carbs, foodItem, quantity, calories } = this.state;
 
         return ( 
-            <div className='food-form-container ui container'>
+            <div className='food-form-container'>
+            <div className=' ui container'>
                 <h1 className='food-form-name'>Log Food</h1>
                 <div>
                 <Form>
                 <Form.Field width={8}>
                     <label id='weight'>Food Item</label>
-                    <input 
+                    <input
+                    id='whoa'
                     type='text' 
                     placeholder='Food item' 
                     value={foodItem}
@@ -106,7 +108,8 @@ class FoodForm extends React.Component {
 
                 <Form.Field width={8}>
                     <label id='weight'>Quantity (grams)</label>
-                    <input 
+                    <input
+                    id='whoa'
                     type='text' 
                     placeholder='Quantity'
                     value={quantity}
@@ -117,7 +120,8 @@ class FoodForm extends React.Component {
 
                 <Form.Field width={8}>
                     <label id='weight'>Calories</label>
-                    <input 
+                    <input
+                    id='whoa' 
                     type='text' 
                     placeholder='Calories'
                     value={calories}
@@ -181,6 +185,7 @@ class FoodForm extends React.Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <input
+                                id='whoa'
                                 type='text' 
                                 placeholder='50g'
                                 value={carbs}
@@ -200,6 +205,7 @@ class FoodForm extends React.Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <input
+                                id='whoa'
                                 type='text' 
                                 placeholder='16g'
                                 value={fats}
@@ -220,6 +226,7 @@ class FoodForm extends React.Component {
                             </Grid.Column>
                             <Grid.Column>
                                 <input
+                                id='whoa'
                                 type='text' 
                                 placeholder='33g'
                                 value={protein}
@@ -236,6 +243,7 @@ class FoodForm extends React.Component {
                 </Form>
                 </div>
          
+            </div>
             </div>
 
 
