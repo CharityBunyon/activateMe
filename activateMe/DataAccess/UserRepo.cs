@@ -73,9 +73,9 @@ namespace activateMe.DataAccess
         public User AddUser(User userToAdd)
         {
             var sql = @"
-                        Insert into [User](firstname, lastname, dateJoined, userName, Email, city, state, imageUrl, points)
+                        Insert into [User](firstname, lastname, dateJoined, userName, Email, city, state, imageUrl)
                         Output Inserted. *
-                        Values(@firstname, @lastname, GETDATE(), @username, @Email, @city, @state, @imageUrl, 0)";
+                        Values(@firstname, @lastname, GETDATE(), @username, @Email, 'Awesome Sauce', 'TN', 'https://lh3.googleusercontent.com/proxy/qPtLqvLNJ0zSKLNwSXdumND5edL_-y9ZVDpCaC_wMHuea9v43NbJ2FnAqNKaWdhCKHPSgy5Czw01Gcj3-sW-b8OIAOn18AC1XTMdxhpO108uOG1_1gOIcjFbK8CDo2VcOwtZYOFUK_c')";
 
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -90,13 +90,11 @@ namespace activateMe.DataAccess
             var sql = @"Update [User]
                         SET firstname = @firstname, 
                             lastname = @lastname,
-                            dateJoined = GETDATE(),
                             userName = @username,
                             email = @email,
                             city = @city,
                             state = @state,
                             imageUrl = @imageUrl,
-                            points = @points
                         OUTPUT INSERTED. *
                         WHERE Id = @id";
             using (var db = new SqlConnection(ConnectionString))
@@ -107,12 +105,10 @@ namespace activateMe.DataAccess
                     updatedUser.Firstname,
                     updatedUser.Lastname,
                     updatedUser.UserName,
-                    updatedUser.DateJoined,
                     updatedUser.Email,
                     updatedUser.City,
                     updatedUser.State,
                     updatedUser.ImageUrl,
-                    updatedUser.Points,
                 };
 
                 var result = db.QueryFirstOrDefault<User>(sql, parameters);

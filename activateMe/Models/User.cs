@@ -18,7 +18,6 @@ namespace activateMe.Models
         public string City { get; set; }
         public string State { get; set; }
         public string ImageUrl { get; set; }
-        public  int Points { get; set; }
 
     }
 }

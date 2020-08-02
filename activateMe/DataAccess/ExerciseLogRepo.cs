@@ -83,7 +83,7 @@ namespace activateMe.DataAccess
         }
 
 
-        public int GetAllCaloriesFromExercise(int uid)
+        public int? GetAllCaloriesFromExercise(int uid)
         {
             var sql = @"select SUM(calories) as Calories
                         from Exercise
@@ -92,12 +92,12 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
 
             }
         }
 
-        public int GetExercisePoints(int id)
+        public int? GetExercisePoints(int id)
         {
             var sql = @"select SUM(points) as points
                         from Exercise
@@ -106,7 +106,7 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Id = id };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
             }
         }
     }
