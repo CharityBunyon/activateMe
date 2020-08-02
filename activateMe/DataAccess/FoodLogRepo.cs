@@ -89,7 +89,7 @@ namespace activateMe.DataAccess
         }
 
 
-        public int GetAllFoodCaloriesForUser(int uid)
+        public int? GetAllFoodCaloriesForUser(int uid)
         {
             var sql = @"select SUM(calories) as Calories
                         from Food
@@ -98,12 +98,12 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
 
             }
         }
 
-        public int GetUserPoints(int id)
+        public int? GetUserPoints(int id)
         {
             var sql = @"select SUM(points) as points
                         from Food
@@ -112,11 +112,11 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new  { Id = id };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
             }
         }
 
-        public int GetAllCarbsUser(int uid)
+        public int? GetAllCarbsUser(int uid)
         {
             var sql = @"select SUM(carbs) as Carbs
                         from Food
@@ -125,12 +125,12 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
 
             }
         }
 
-        public int GetAllFatsUser(int uid)
+        public int? GetAllFatsUser(int uid)
         {
             var sql = @"select SUM(fats) as Fats
                         from Food
@@ -139,12 +139,12 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
 
             }
         }
 
-        public int GetAllProteinUser(int uid)
+        public int? GetAllProteinUser(int uid)
         {
             var sql = @"select SUM(protein) as Protein
                         from Food
@@ -153,7 +153,7 @@ namespace activateMe.DataAccess
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.QueryFirstOrDefault<int>(sql, parameters);
+                return db.QueryFirstOrDefault<int?>(sql, parameters);
 
             }
         }

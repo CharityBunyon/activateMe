@@ -36,7 +36,7 @@ class Navbar extends React.Component {
                 ): 
                 (null)}
                  {authed ? (
-                    <Link className="item nav-link"  id='hover' to="/activateme/exercises">Exercises</Link>  
+                    <Link className="item nav-link"  id='hover' to="/activateme/exercises">Workouts</Link>  
                 ): 
                 (null)}
                  

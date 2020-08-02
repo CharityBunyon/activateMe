@@ -28,7 +28,7 @@ class Register extends React.Component {
         authData.registerUser(email, password)
         .then(()=> {
             authData.addUserToDatabase(userObj);
-            console.error('register user works');
+            this.props.history.push('/');
         })
         .catch((error) =>{
             console.error('There was an error registering a user');

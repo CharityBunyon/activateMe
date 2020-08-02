@@ -84,7 +84,7 @@ class App extends React.Component {
               ))}/>
               
               <Route path="/activateme/register" exact component={Register}/>
-              <Route path="/activateme/dashboard" exact component={Dashboard}/> 
+              <PrivateRoute authed={authed} path="/activateme/dashboard" exact component={Dashboard}/> 
               <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Exercises}/>
               <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>
               <PrivateRoute authed={authed} path="/activateme/log" exact component={LogPage}/>
