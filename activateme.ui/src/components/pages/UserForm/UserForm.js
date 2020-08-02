@@ -80,77 +80,86 @@ class UserForm extends React.Component {
 
     render() { 
         const { firstname, lastname, email, city, state, image, imageUrl} = this.state;
-
+       
         return ( 
+          <div className='user-form'>
             <div className='ui container'>
-              <h1 className='food-form-name'>Edit Profile Info</h1>
-                <Form>
-                <div>
-                <p><strong>Upload Image</strong></p>
-                {image && (<img className='uploadedImg' src={imageUrl} alt={imageUrl}/>)}
-                <Form.Field width={8}>
-                <FileUploader
-                    accepts='image/*'
-                    name='image'
-                    storageRef={firebase.storage().ref('userImage/')}
-                    onUploadSuccess={this.handleUploadSuccess}
-                    
-                />
-                </Form.Field>
-                </div>
-                <Form.Field width={8}>
-                    <label>Firstname</label>
-                    <input 
-                    type='text' 
-                    placeholder='firstname' 
-                    value={firstname}
-                    onChange={this.firstnameChange}
-                    required
-                    />
-                </Form.Field>
-                <Form.Field width={8}>
-                    <label>Lastname</label>
-                    <input 
-                    type='text' 
-                    placeholder='lastname' 
-                    value={lastname}
-                    onChange={this.lastnameChange}
-                    required
-                    />
-                </Form.Field>
-                <Form.Field width={8}>
-                    <label>Email</label>
-                    <input 
-                    type='text' 
-                    placeholder='Email' 
-                    value={email}
-                    onChange={this.emailChange}
-                    required
-                    />
-                </Form.Field>
-                <Form.Field  width={8}>
-                    <label>City</label>
-                    <input 
-                    type='text' 
-                    placeholder='City' 
-                    value={city}
-                    onChange={this.cityChange}
-                    required
-                    />
-                </Form.Field>
-                <Form.Field width={8}>
-                    <label>State</label>
-                    <input 
-                    type='text' 
-                    placeholder='State' 
-                    value={state}
-                    onChange={this.stateChange}
-                    required
-                    />
-                </Form.Field>
-                <Button className='ui large submit button teal' onClick={this.editUserEvent}>Edit User</Button>
-                </Form>
-            </div>
+            <h1 className='user-form-title'>Edit Profile Info</h1>
+              <Form>
+              <div>
+              <p><strong>Upload Image</strong></p>
+              {image && (<img className='uploadedImg' src={imageUrl} alt={imageUrl}/>)}
+              <Form.Field width={8}>
+              <FileUploader
+                  id='whoa'
+                  accepts='image/*'
+                  name='image'
+                  storageRef={firebase.storage().ref('userImage/')}
+                  onUploadSuccess={this.handleUploadSuccess} 
+              />
+              </Form.Field>
+              </div>
+          
+              <Form.Field width={8}>
+                  <label>Firstname</label>
+                  <input 
+                  id='whoa'
+                  type='text' 
+                  placeholder='Firstname' 
+                  value={firstname}
+                  onChange={this.firstnameChange}
+                  required
+                  />
+              </Form.Field>
+    
+              <Form.Field width={8}>
+                  <label>Lastname</label>
+                  <input 
+                  id='whoa'
+                  type='text' 
+                  placeholder='Lastname' 
+                  value={lastname}
+                  onChange={this.lastnameChange}
+                  required
+                  />
+              </Form.Field>
+              <Form.Field width={8}>
+                  <label>Email</label>
+                  <input 
+                  id='whoa'
+                  type='text' 
+                  placeholder='Email' 
+                  value={email}
+                  onChange={this.emailChange}
+                  required
+                  />
+              </Form.Field>
+              <Form.Field  width={8}>
+                  <label>City</label>
+                  <input 
+                  id='whoa'
+                  type='text' 
+                  placeholder='City' 
+                  value={city}
+                  onChange={this.cityChange}
+                  required
+                  />
+              </Form.Field>
+              <Form.Field width={8}>
+                  <label>State</label>
+                  <input 
+                  id='whoa'
+                  type='text' 
+                  placeholder='State' 
+                  value={state}
+                  onChange={this.stateChange}
+                  required
+                  />
+              </Form.Field>
+              <Button className='ui large submit button teal' onClick={this.editUserEvent}>Edit User</Button>
+              </Form>
+          </div>
+        </div>
          );
     }
 }

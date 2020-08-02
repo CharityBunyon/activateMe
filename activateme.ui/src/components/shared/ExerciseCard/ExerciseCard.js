@@ -14,15 +14,23 @@ class ExerciseCard extends React.Component {
         
         return ( 
             <div className='four wide column'>
-                <Card>
+                {/* <Card>
                 <Image src={exercise.imageUrl} wrapped ui={false} alt={exercise.name}/>
                 <Card.Content>
                 <Card.Header>{exercise.name}</Card.Header>
                 </Card.Content>
                 <Card.Content extra>
                 <a href={exercise.link}>View</a>
-                </Card.Content>
-            </Card>
+                </Card.Content> */}
+            {/* </Card> */}
+            <a href={exercise.link}>
+                    <Card>
+                    <Image src={exercise.imageUrl} wrapped ui={false} alt={exercise.name}/>
+                    <Card.Content>
+                    <Card.Header className='ui center aligned grid'>{exercise.name}</Card.Header>
+                    </Card.Content>
+                    </Card>
+                </a>
           </div>
          );
     }

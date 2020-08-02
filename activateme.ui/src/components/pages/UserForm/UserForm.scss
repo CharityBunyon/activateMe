@@ -5,3 +5,26 @@
     border-radius: 5px;
   
   }
+
+  .user-form{
+    background-image: url("../../../assets/hermes-rivera-Ww8eQWjMJWk-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+.user-form-title{
+  color: teal;
+}
+
+#whoa{
+  background: transparent;
+}
+
+#whoa::placeholder {
+  color: #000;
+}
