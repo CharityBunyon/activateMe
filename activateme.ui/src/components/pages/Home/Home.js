@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import plant from '../../../assets/plants-landing.jpg'
-import exercise from '../../../assets/exercise-landing.jpg'
+import plant from '../../../assets/plants-landing.jpg';
+import exercise from '../../../assets/exercise-landing.jpg';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -12,7 +12,7 @@ class Home extends React.Component {
                 <div className="pusher landing-img">
                     <div className="ui vertical masthead center aligned segment">
                         <div className="ui text container">
-                            <h1 className="ui inverted header">ACTIVATE ME </h1>
+                            <h1 className="ui inverted header app-name">ACTIVATE ME </h1>
                             <h2 className='slogan'>Muscle Powered by Plants</h2>
                             <Link to='/activateme/login' className="ui huge black button">Get Started <i className="right arrow icon"></i></Link>
                                 

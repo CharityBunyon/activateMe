@@ -94,7 +94,7 @@ namespace activateMe.DataAccess
                             email = @email,
                             city = @city,
                             state = @state,
-                            imageUrl = @imageUrl,
+                            imageUrl = @imageUrl
                         OUTPUT INSERTED. *
                         WHERE Id = @id";
             using (var db = new SqlConnection(ConnectionString))

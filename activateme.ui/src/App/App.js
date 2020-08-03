@@ -20,7 +20,7 @@ import Recipes from './../components/pages/Recipes/Recipes';
 import UserForm from '../components/pages/UserForm/UserForm';
 import FoodForm from './../components/pages/FoodForm/FoodForm';
 import ExerciseForm from './../components/pages/ExerciseForm/ExerciseForm';
-// import Footer from '../components/shared/Footer/Footer';
+import Footer from '../components/shared/Footer/Footer';
 import authData from '../helpers/data/authData';
 
 import './App.scss';
@@ -92,7 +92,7 @@ class App extends React.Component {
               <PrivateRoute authed={authed} path="/activateme/foodForm" exact component={FoodForm}/>
               <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={ExerciseForm}/>
           </Switch>
-  
+          <Footer authed={authed} />
         </Router>
       </div>
     );
