@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Form, Button, Grid } from 'semantic-ui-react'
+import {Form, Button } from 'semantic-ui-react'
 import exerciseLogData  from '../../../helpers/data/exerciseLogData';
 
 

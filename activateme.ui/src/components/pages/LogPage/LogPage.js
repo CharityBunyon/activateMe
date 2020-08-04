@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image,Popup, Grid, Card, Rating } from 'semantic-ui-react'
+import { Popup, Grid} from 'semantic-ui-react'
 import 'firebase/auth';
 import foodLogData from '../../../helpers/data/foodLogData';
 import exerciseLogData from '../../../helpers/data/exerciseLogData';
