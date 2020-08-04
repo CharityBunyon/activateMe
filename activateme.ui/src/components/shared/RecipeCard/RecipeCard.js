@@ -14,7 +14,7 @@ class RecipeCard extends React.Component {
         
         return ( 
             <div className='four wide column'>
-                 <a href={recipe.link}>
+                 <a href={recipe.link} target="_blank">
                     <Card>
                     <Image src={recipe.imageUrl} wrapped ui={false} alt={recipe.name}/>
                     <Card.Content>
