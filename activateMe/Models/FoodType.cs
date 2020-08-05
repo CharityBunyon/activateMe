@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace activateMe.Models
 {
-    public class SampleRecipes
+    public class FoodType
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
-        public string Link { get; set; }
+        public string Type { get; set; }
+        public int PointMultiplier { get; set; }
     }
 }

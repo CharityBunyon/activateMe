@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Form, Button } from 'semantic-ui-react'
-import exerciseLogData  from '../../../helpers/data/exerciseLogData';
+import workoutLogData  from '../../../helpers/data/workoutLogData';
 
+import './WorkoutForm.scss'
 
-import './ExerciseForm.scss'
-
-class ExerciseForm extends React.Component {
+class WorkoutForm extends React.Component {
     state = { 
         name: '',
         time: '',
@@ -15,16 +14,16 @@ class ExerciseForm extends React.Component {
         user: sessionStorage.getItem('userId'),
      }
 
-     addExerciseLog = (e) => {
+    addExerciseLog = (e) => {
         e.preventDefault();
-        const exerciseToAdd = {
+        const workoutToAdd = {
             Name: this.state.name,
-            CategoryTypeId: Number(this.state.value),
+            WorkoutTypeId: Number(this.state.value),
             Time: Number(this.state.time),
             Calories: Number(this.state.calories),
             UserId: Number(this.state.user),
         };
-        exerciseLogData.addExercise(exerciseToAdd)
+        workoutLogData.addWorkout(workoutToAdd)
         .then(() => this.props.history.push('/activateme/log'))
     }
 
@@ -56,7 +55,7 @@ class ExerciseForm extends React.Component {
         return ( 
             <div className='exercise-form-background'>
                 <div className='ui container'>
-                    <h1 className='food-form-name'>Log Activity</h1>
+                    <h1 className='food-form-name'>Log Workout</h1>
                     <div>
                     <Form>
                     <Form.Field width={8}>
@@ -131,7 +130,6 @@ class ExerciseForm extends React.Component {
                     />
                     </Form.Group>
 
-
                     <Button className='ui large submit button teal' onClick={this.addExerciseLog}>Add Activity</Button>
                     <Link to='/activateme/log' className='cancel-link'>Cancel</Link>
                     </Form>
@@ -142,4 +140,4 @@ class ExerciseForm extends React.Component {
     }
 }
  
-export default ExerciseForm;
+export default WorkoutForm;

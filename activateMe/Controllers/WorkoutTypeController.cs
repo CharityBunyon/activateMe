@@ -10,20 +10,20 @@ namespace activateMe.Controllers
 {
     [Route("api/activateMe")]
     [ApiController]
-    public class ExerciseCategoryController : ControllerBase
+    public class WorkoutTypeController : ControllerBase
     {
-        ExerciseCategoryRepo _repository;
+        WorkoutTypeRepo _repository;
 
-        public ExerciseCategoryController(ExerciseCategoryRepo repository)
+        public WorkoutTypeController(WorkoutTypeRepo repository)
         {
             _repository = repository;
         }
 
-        [HttpGet("exerciseCategory")]
+        [HttpGet("workoutType")]
         public IActionResult GetExerciseCategories()
         {
-            var allExerciseCategories = _repository.GetExerciseCategories();
-            return Ok(allExerciseCategories);
+            var allWorkouts = _repository.GetWorkouts();
+            return Ok(allWorkouts);
         }
     }
 }

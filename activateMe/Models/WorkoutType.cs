@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace activateMe.Models
 {
-    public class FoodCategory
+    public class WorkoutType
     {
         public int Id { get; set; }
         public string Type { get; set; }

@@ -23,29 +23,29 @@ namespace activateMe.DataAccess
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<Badges>("select * from badges");
+                return db.Query<Badges>("select * from badge");
             }
         }
 
         public IEnumerable<Badges> RevealBadges(int id)
         {
             var sql = @"declare @foodPoints int 
-                        declare @exercisePoints int 
+                        declare @workoutPoints int 
 
                         select 
                         @foodPoints = sum(points)
-                        from food 
+                        from FoodLog
                         where userId = @id
 
                         select 
-                        @exercisePoints = sum(points)
-                        from Exercise
+                        @workoutPoints = sum(points)
+                        from WorkoutLog
                         where userId = @id
 
 
                         select *
-                        from Badges b
-                        where @foodPoints + @exercisePoints >= b.pointValue
+                        from Badge b
+                        where @foodPoints + @workoutPoints >= b.pointValue
                         ";
             
 

@@ -5,6 +5,7 @@ import foodLogData from '../../../helpers/data/foodLogData';
 import bread from '../../../assets/carbs.png';
 import fat from '../../../assets/oil.png';
 import pro from '../../../assets/protein.png';
+
 import './FoodForm.scss';
 
 
@@ -19,9 +20,6 @@ class FoodForm extends React.Component {
         protein: '',
         user: sessionStorage.getItem('userId'),
      }
-
-    
-
     
     addFoodLog = (e) => {
          e.preventDefault();
@@ -83,8 +81,6 @@ class FoodForm extends React.Component {
     }
 
     
-    
-
     render() { 
         const { protein, fats, carbs, foodItem, quantity, calories } = this.state;
 
@@ -242,9 +238,8 @@ class FoodForm extends React.Component {
                 <Link to='/activateme/log' className='cancel-link'>Cancel</Link>
                 </Form>
                 </div>
-         
             </div>
-            </div>
+        </div>
 
 
          );

@@ -2,6 +2,7 @@ import React from 'react';
 import recipeData from '../../../helpers/data/recipeData';
 import RecipeCard from '../../shared/RecipeCard/RecipeCard';
 import recipePageImg from '../../../assets/nudge2.png';
+
 import './Recipes.scss';
 
 class Recipes extends React.Component {
@@ -22,7 +23,6 @@ class Recipes extends React.Component {
         return ( 
             <div>
                 <img src={recipePageImg} alt='girls working out' className='girls-workout'/>
-                
                 <div className='ui grid container center aligned'>
                     <h1 className='recipe-title'>Feed Your Soul With Some Plant Based Recipes</h1>
                     <div className=' ui grid'>

@@ -10,41 +10,41 @@ using System.Data.SqlClient;
 
 namespace activateMe.DataAccess
 {
-    public class ExerciseLogRepo
+    public class WorkoutLogRepo
     {
         string ConnectionString;
 
-        public ExerciseLogRepo(IConfiguration config)
+        public WorkoutLogRepo(IConfiguration config)
         {
             ConnectionString = config.GetConnectionString("ActivateMe");
         }
 
-        public IEnumerable<ExerciseLog> GetAllLogs()
+        public IEnumerable<WorkoutLog> GetAllLogs()
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<ExerciseLog>("select * from Exercise");
+                return db.Query<WorkoutLog>("select * from WorkoutLog");
             }
         }
 
-        public IEnumerable<ExerciseLog>  GetUserLogsById(int uid)
+        public IEnumerable<WorkoutLog>  GetUserLogsById(int uid)
         {
             var sql = @"select * 
-                        from Exercise
+                        from WorkoutLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                return db.Query<ExerciseLog>(sql, parameters);
+                return db.Query<WorkoutLog>(sql, parameters);
 
             }
         }
 
-        public string DeleteExerciseLog(int id)
+        public string DeleteWorkoutLog(int id)
         {
             var sql = @"delete 
-                        from Exercise
+                        from WorkoutLog
                         where id = @id";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -54,39 +54,39 @@ namespace activateMe.DataAccess
             }
         }
 
-        public ExerciseLog AddExerciseLog(ExerciseLog exerciseToAdd)
+        public WorkoutLog AddWorkoutLog(WorkoutLog exerciseToAdd)
         {
-            var sql = @"insert into Exercise(name, categoryTypeId, time, calories, points, userId)
+            var sql = @"insert into WorkoutLog(Name, WorkoutTypeId, Time, Calories, Points, UserId)
                         output inserted. *
-                        values(@name, @categoryTypeId, @time, @calories, @points, @userId )";
+                        values(@Name, @WorkoutTypeId, @Time, @Calories, @Points, @UserId )";
 
-            var multiplierQuery = @"select pointMultiplier
-                                    from ExerciseCategory
-                                    where id = @categoryTypeId";
+            var multiplierQuery = @"select PointMultiplier
+                                    from WorkoutType
+                                    where id = @WorkoutTypeId";
 
             using (var db = new SqlConnection(ConnectionString))
             {
-                var multiplier = db.QueryFirstOrDefault<int>(multiplierQuery, new { CategoryTypeId = exerciseToAdd.CategoryTypeId });
+                var multiplier = db.QueryFirstOrDefault<int>(multiplierQuery, new { WorkoutTypeId = exerciseToAdd.WorkoutTypeId });
                 var points = exerciseToAdd.Time * multiplier;
                 var parameters = new
                 {
                     exerciseToAdd.Name,
-                    exerciseToAdd.CategoryTypeId,
+                    exerciseToAdd.WorkoutTypeId,
                     exerciseToAdd.Time,
                     exerciseToAdd.Calories,
                     exerciseToAdd.UserId,
                     points = points
                 };
-                var result = db.QueryFirstOrDefault<ExerciseLog>(sql, parameters);
+                var result = db.QueryFirstOrDefault<WorkoutLog>(sql, parameters);
                 return result;
             }
         }
 
 
-        public int? GetAllCaloriesFromExercise(int uid)
+        public int? GetAllCaloriesFromWorkouts(int uid)
         {
             var sql = @"select SUM(calories) as Calories
-                        from Exercise
+                        from WorkoutLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -97,10 +97,10 @@ namespace activateMe.DataAccess
             }
         }
 
-        public int? GetExercisePoints(int id)
+        public int? GetWorkoutPoints(int id)
         {
             var sql = @"select SUM(points) as points
-                        from Exercise
+                        from WorkoutLog
                         where userId = @id";
 
             using (var db = new SqlConnection(ConnectionString))

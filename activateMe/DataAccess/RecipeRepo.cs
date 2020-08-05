@@ -9,24 +9,24 @@ using Dapper;
 
 namespace activateMe.DataAccess
 {
-    public class SampleExercisesRepo
+    public class RecipeRepo
     {
         string ConnectionString;
 
-        public SampleExercisesRepo(IConfiguration config)
+        public RecipeRepo(IConfiguration config)
         {
             ConnectionString = config.GetConnectionString("ActivateMe");
         }
 
-        public IEnumerable<SampleExercises> GetAll()
+        public IEnumerable<Recipes> GetAll()
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<SampleExercises>("Select * From SampleExercises");
+                return db.Query<Recipes>("Select * From Recipe");
             }
         }
 
-        //public SampleExercises AddExerciseToDashboard(SampleExercises exerciseToAdd)
+        //public Recipes AddRecipeToDashboard(Recipes recipeToAdd)
         //{
         //    var sql = @"
         //                insert into [User]
@@ -38,7 +38,7 @@ namespace activateMe.DataAccess
 
         //    using (var db = new SqlConnection(ConnectionString))
         //    {
-        //        var result = db.QueryFirstOrDefault<SampleExercises>(sql, exerciseToAdd);
+        //        var result = db.QueryFirstOrDefault<Recipes>(sql, recipeToAdd);
 
         //        return result;
         //    }

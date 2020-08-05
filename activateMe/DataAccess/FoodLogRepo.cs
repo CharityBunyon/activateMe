@@ -24,14 +24,14 @@ namespace activateMe.DataAccess
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<FoodLog>("select * from Food");
+                return db.Query<FoodLog>("select * from FoodLog");
             }
         }
 
         public IEnumerable<FoodLog> GetUserLogsById(int userId)
         {
             var sql = @"select * 
-                        from Food
+                        from FoodLog
                         where UserId = @userId";
 
             var parameters = new {UserId = userId};
@@ -47,7 +47,7 @@ namespace activateMe.DataAccess
         public string DeleteLog(int id)
         {
             var sql = @"delete 
-                        from Food
+                        from FoodLog
                         where id = @id";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -59,13 +59,13 @@ namespace activateMe.DataAccess
 
         public FoodLog AddFoodLog(FoodLog foodToAdd)
         {
-            var sql = @"insert into Food(name, foodTypeId, quantity, calories, points, carbs, fats, protein, userId)
+            var sql = @"insert into FoodLog(Name, FoodTypeId, Quantity, Calories, Points, Carbs, Fats, Protein, UserId)
                         output inserted. *
-                        values(@name, @foodTypeId, @quantity, @calories, @points, @carbs, @fats, @protein, @userId )";
+                        values(@Name, @FoodTypeId, @Quantity, @Calories, @Points, @Carbs, @Fats, @Protein, @UserId )";
 
-            var multiplierQuery = @"select pointMultiplier
-                                    from FoodCategory
-                                    where id = @foodTypeId";
+            var multiplierQuery = @"select PointMultiplier
+                                    from FoodType
+                                    where id = @FoodTypeId";
 
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -92,7 +92,7 @@ namespace activateMe.DataAccess
         public int? GetAllFoodCaloriesForUser(int uid)
         {
             var sql = @"select SUM(calories) as Calories
-                        from Food
+                        from FoodLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -106,7 +106,7 @@ namespace activateMe.DataAccess
         public int? GetUserPoints(int id)
         {
             var sql = @"select SUM(points) as points
-                        from Food
+                        from FoodLog
                         where userId = @id";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -119,7 +119,7 @@ namespace activateMe.DataAccess
         public int? GetAllCarbsUser(int uid)
         {
             var sql = @"select SUM(carbs) as Carbs
-                        from Food
+                        from FoodLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -133,7 +133,7 @@ namespace activateMe.DataAccess
         public int? GetAllFatsUser(int uid)
         {
             var sql = @"select SUM(fats) as Fats
-                        from Food
+                        from FoodLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))
@@ -147,7 +147,7 @@ namespace activateMe.DataAccess
         public int? GetAllProteinUser(int uid)
         {
             var sql = @"select SUM(protein) as Protein
-                        from Food
+                        from FoodLog
                         where userId = @uid";
 
             using (var db = new SqlConnection(ConnectionString))

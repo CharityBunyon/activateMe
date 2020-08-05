@@ -11,11 +11,11 @@ namespace activateMe.Controllers
 {
     [Route("api/activateMe")]
     [ApiController]
-    public class SampleRecipeController: ControllerBase
+    public class RecipeController: ControllerBase
     {
-        SampleRecipeRepo _repository;
+        RecipeRepo _repository;
 
-        public SampleRecipeController(SampleRecipeRepo repository)
+        public RecipeController(RecipeRepo repository)
         {
             _repository = repository;
         }
