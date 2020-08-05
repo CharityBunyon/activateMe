@@ -52,16 +52,14 @@ const getUserByEmail = (email) => new Promise((resolve, reject) => {
 
 const updateUserInfo = (user) => axios.put(`${baseUrl}/update`, user);
 
-// const getUserPoints = (id) => new Promiseaxios.get(`${baseUrl}/points/${id}`);
-    
-const getUserPoints = (id) => new Promise((resolve, reject) => {
+const getFoodPoints = (id) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/points/${id}`)
   .then((result) => resolve(result.data))
   .catch((error) => reject(error));
 });
 
-const getExercisePoints = (id) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/exercisePoints/${id}`)
+const getWorkoutPoints = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/workoutPoints/${id}`)
   .then((result) => resolve(result.data))
   .catch((error) => reject(error));
 });
@@ -69,5 +67,5 @@ const getExercisePoints = (id) => new Promise((resolve, reject) => {
   
   
   export default {
-    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo, getUserPoints, getExercisePoints
+    loginUser, registerUser, loginWithGoogle, addUserToDatabase,getUserByEmail, updateUserInfo, getFoodPoints, getWorkoutPoints
   };

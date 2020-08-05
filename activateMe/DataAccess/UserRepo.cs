@@ -42,19 +42,6 @@ namespace activateMe.DataAccess
             }
         }
 
-        public User GetUserByUsername(string username)
-        {
-            var sql = @"Select *
-                      From [User]
-                      Where UserName = @username";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var user = db.QueryFirstOrDefault<User>(sql, new {Username = username});
-
-                return user;
-            }
-        }
 
         public User GetUserByEmail(string email)
         {
@@ -73,9 +60,9 @@ namespace activateMe.DataAccess
         public User AddUser(User userToAdd)
         {
             var sql = @"
-                        Insert into [User](firstname, lastname, dateJoined, userName, Email, city, state, imageUrl)
+                        Insert into [User](FirstName, LastName, DateJoined, Email, City, State, ImageUrl)
                         Output Inserted. *
-                        Values(@firstname, @lastname, GETDATE(), @username, @Email, 'Awesome Sauce', 'TN', 'https://lh3.googleusercontent.com/proxy/qPtLqvLNJ0zSKLNwSXdumND5edL_-y9ZVDpCaC_wMHuea9v43NbJ2FnAqNKaWdhCKHPSgy5Czw01Gcj3-sW-b8OIAOn18AC1XTMdxhpO108uOG1_1gOIcjFbK8CDo2VcOwtZYOFUK_c')";
+                        Values(@Firstname, @Lastname, GETDATE(), @Email, 'Awesome Sauce', 'TN', 'https://raw.githubusercontent.com/CharityBunyon/activateMe/master/activateme.ui/src/assets/default-user-icon-4.jpg')";
 
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -88,13 +75,12 @@ namespace activateMe.DataAccess
         public User UpdateUser(User updatedUser)
         {
             var sql = @"Update [User]
-                        SET firstname = @firstname, 
-                            lastname = @lastname,
-                            userName = @username,
-                            email = @email,
-                            city = @city,
-                            state = @state,
-                            imageUrl = @imageUrl
+                        SET Firstname = @FirstName, 
+                            Lastname = @LastName,
+                            Email = @Email,
+                            City = @City,
+                            State = @State,
+                            ImageUrl = @ImageUrl
                         OUTPUT INSERTED. *
                         WHERE Id = @id";
             using (var db = new SqlConnection(ConnectionString))
@@ -104,7 +90,6 @@ namespace activateMe.DataAccess
                     updatedUser.Id,
                     updatedUser.Firstname,
                     updatedUser.Lastname,
-                    updatedUser.UserName,
                     updatedUser.Email,
                     updatedUser.City,
                     updatedUser.State,

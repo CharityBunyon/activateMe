@@ -104,8 +104,7 @@ class Register extends React.Component {
                     </div>
                     <div className="ui message">
                     Already A Member? <Link to='/activateme/login' className='register-link'>Login</Link>
-                    </div>
-                    
+                    </div>  
                 </form>
                 </div>
                 </div>

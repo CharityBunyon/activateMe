@@ -58,10 +58,10 @@ namespace activateMe.Controllers
         //Add New User
 
         [HttpPost("addUser")]
-        public IActionResult AddUser(User userToAdd)
+        public IActionResult AddUser(string email, User userToAdd)
         {
-            var checkUsername = _repository.GetUserByUsername(userToAdd.UserName);
-            if (checkUsername == null)
+            var currentUser = _repository.GetUserByEmail(email);
+            if (currentUser == null)
             {
                 var result = _repository.AddUser(userToAdd);
                 return Ok(result);

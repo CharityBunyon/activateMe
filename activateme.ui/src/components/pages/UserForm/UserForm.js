@@ -100,7 +100,6 @@ class UserForm extends React.Component {
               />
               </Form.Field>
               </div>
-          
               <Form.Field width={8}>
                   <label>Firstname</label>
                   <input 
@@ -112,7 +111,6 @@ class UserForm extends React.Component {
                   required
                   />
               </Form.Field>
-    
               <Form.Field width={8}>
                   <label>Lastname</label>
                   <input 

@@ -5,25 +5,28 @@ using System.Threading.Tasks;
 using activateMe.DataAccess;
 using activateMe.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace activateMe.Controllers
 {
     [Route("api/activateMe")]
     [ApiController]
-    public class FoodCategoryController: ControllerBase
+    public class WorkoutController: ControllerBase
     {
-        FoodCategoryRepo _repository;
+        WorkoutRepo _repository;
 
-        public FoodCategoryController(FoodCategoryRepo repository)
+        public WorkoutController(WorkoutRepo repository)
         {
             _repository = repository;
         }
 
-        [HttpGet("foodCategory")]
-        public IActionResult GetFoodCategories()
+        //api/user
+        [HttpGet("workouts")]
+        public IActionResult GetAllExercises()
         {
-            var allFoodCategories = _repository.GetFoodCategories();
-            return Ok(allFoodCategories);
+            var allWorkouts = _repository.GetAll();
+
+            return Ok(allWorkouts);
         }
     }
 }

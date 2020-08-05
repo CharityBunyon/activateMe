@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import plant from '../../../assets/plants-landing.jpg';
 import exercise from '../../../assets/exercise-landing.jpg';
+
 import './Home.scss';
 
 class Home extends React.Component {
     render() { 
-   
         return ( 
             <div>
                 <div className="pusher landing-img">
@@ -51,11 +51,8 @@ class Home extends React.Component {
                         </div>
                     </div>
                     </div>
-                </div>
-               
+                </div>          
         </div>
-       
-
          );
     }
 }

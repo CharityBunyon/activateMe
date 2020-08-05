@@ -10,20 +10,20 @@ using System.Data.SqlClient;
 
 namespace activateMe.DataAccess
 {
-    public class FoodCategoryRepo
+    public class FoodTypeRepo
     {
         string ConnectionString;
 
-        public FoodCategoryRepo(IConfiguration config)
+        public FoodTypeRepo(IConfiguration config)
         {
             ConnectionString = config.GetConnectionString("ActivateMe");
         }
 
-        public IEnumerable<FoodCategory> GetFoodCategories()
+        public IEnumerable<FoodType> GetFoodTypes()
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<FoodCategory>("select * from foodCategory");
+                return db.Query<FoodType>("select * from FoodType");
             }
         }
     }

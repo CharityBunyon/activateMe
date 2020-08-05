@@ -13,13 +13,13 @@ import Navbar from '../components/shared/Navbar/Navbar';
 import Login from '../components/pages/Login/Login';
 import Register from '../components/pages/Register/Register';
 import Dashboard from '../components/pages/Dashboard/Dashboard';
-import Exercises from '../components/pages/Exercises/Exercises';
+import Workout from '../components/pages/Workout/Workout';
 import Home from '../components/pages/Home/Home';
 import LogPage from '../components/pages/LogPage/LogPage';
 import Recipes from './../components/pages/Recipes/Recipes';
 import UserForm from '../components/pages/UserForm/UserForm';
 import FoodForm from './../components/pages/FoodForm/FoodForm';
-import ExerciseForm from './../components/pages/ExerciseForm/ExerciseForm';
+import WorkoutForm from '../components/pages/WorkoutForm/WorkoutForm';
 import Footer from '../components/shared/Footer/Footer';
 import authData from '../helpers/data/authData';
 
@@ -85,12 +85,12 @@ class App extends React.Component {
               
               <Route path="/activateme/register" exact component={Register}/>
               <PrivateRoute authed={authed} path="/activateme/dashboard" exact component={Dashboard}/> 
-              <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Exercises}/>
+              <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Workout}/>
               <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>
               <PrivateRoute authed={authed} path="/activateme/log" exact component={LogPage}/>
               <PrivateRoute authed={authed} path="/activateme/updateUser" exact component={UserForm}/>
               <PrivateRoute authed={authed} path="/activateme/foodForm" exact component={FoodForm}/>
-              <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={ExerciseForm}/>
+              <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={WorkoutForm}/>
           </Switch>
           <Footer authed={authed} />
         </Router>

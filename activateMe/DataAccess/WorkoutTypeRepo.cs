@@ -10,20 +10,20 @@ using System.Data.SqlClient;
 
 namespace activateMe.DataAccess
 {
-    public class ExerciseCategoryRepo
+    public class WorkoutTypeRepo
     {
         string ConnectionString;
 
-        public ExerciseCategoryRepo(IConfiguration config)
+        public WorkoutTypeRepo(IConfiguration config)
         {
             ConnectionString = config.GetConnectionString("ActivateMe");
         }
 
-        public IEnumerable<ExerciseCategory> GetExerciseCategories()
+        public IEnumerable<WorkoutType> GetWorkouts()
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                return db.Query<ExerciseCategory>("select * from exerciseCategory");
+                return db.Query<WorkoutType>("select * from WorkoutType");
             }
         }
     }

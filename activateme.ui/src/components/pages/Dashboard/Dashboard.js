@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
         email: '',
         badges: [], 
         foodPoints:'',
-        exercisePoints: '',
+        workoutPoints: '',
         userId: Number(sessionStorage.getItem('userId')), 
     }
  
@@ -37,15 +37,12 @@ class Dashboard extends React.Component {
        if(userObj) {
            this.setState({email: userObj.email})
            this.getUser();
-           this.getUserPoints();
-           this.getExercisePoints();
+           this.getFoodPoints();
+           this.getWorkoutPoints();
        }
      }
    ) 
-  
 }
-
-
 
 
  getUser = () => {
@@ -55,24 +52,22 @@ class Dashboard extends React.Component {
      .catch((error) => console.error(error, 'error from getUser in dashboard'))
  }
 
- getUserPoints = () => {
-     authData.getUserPoints(this.state.userId)
+ getFoodPoints = () => {
+     authData.getFoodPoints(this.state.userId)
      .then((foodPoints) => this.setState({foodPoints}))
      .catch((error) => console.error(error, 'error from getPoints in dashboard'))
  }
 
- getExercisePoints = () => {
-    authData.getExercisePoints(this.state.userId)
-    .then((exercisePoints) => this.setState({exercisePoints}))
+ getWorkoutPoints = () => {
+    authData.getWorkoutPoints(this.state.userId)
+    .then((workoutPoints) => this.setState({workoutPoints}))
     .catch((error) => console.error(error, 'error from getPoints in dashboard'))
 }
-
-        
 
 
     render() { 
        const {user, badges} = this.state;
-       const totalPoints = this.state.foodPoints + this.state.exercisePoints;
+       const totalPoints = this.state.foodPoints + this.state.workoutPoints;
       
         return ( 
             <div className='dash-container'>
@@ -87,8 +82,7 @@ class Dashboard extends React.Component {
                                 <p className='userinfo'><strong className='city'>City:</strong> {user.city}</p>
                                 <p className='userinfo'><strong className='state'>State:</strong> {user.state}</p>
                                 <p className='userinfo'><strong className='member'>Member Since:</strong> {moment(user.dateJoined).format('MMMM Do, YYYY')}</p>
-                                <Link className='ui large submit button teal' to='/activateme/updateUser'>Edit</Link>
-                                
+                                <Link className='ui large submit button teal' to='/activateme/updateUser'>Edit</Link> 
                             </div>
                         </div>
 
@@ -131,11 +125,8 @@ class Dashboard extends React.Component {
                         <div className='badge-container ui grid container'>
       
                             {badges.map((badge) => <BadgeCard key={badge.badgeId} badge={badge} />)} 
-                      
                         </div>      
                     </div>
-          
-            
             </div>
 
          );

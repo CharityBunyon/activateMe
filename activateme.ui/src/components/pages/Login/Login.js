@@ -48,13 +48,13 @@ class Login extends React.Component {
                     <div className="field">
                     <div className="ui left icon input">
                         <i className="user icon"></i>
-                        <input 
+                        <input
+                        error={{ content: 'Please enter your email', pointing: 'below' }} 
                         type="text" 
                         name="email" 
                         placeholder="E-mail address"
                         value={email}
                         onChange={this.emailChange}
-                        error
                         required>
                         </input>
                     </div>
@@ -62,7 +62,8 @@ class Login extends React.Component {
                     <div className="field">
                     <div className="ui left icon input">
                         <i className="lock icon"></i>
-                        <input 
+                        <input
+                        error={{ content: 'Please enter your password', pointing: 'below' }} 
                         type="password" 
                         name="password" 
                         placeholder="Password"

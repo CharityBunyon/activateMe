@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace activateMe.Models
 {
-    public class ExerciseLog
+    public class WorkoutLog
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int CategoryTypeId { get; set; }
+        public int WorkoutTypeId { get; set; }
         public int Time { get; set; }
         public int? Calories { get; set; }
         public int? Points { get; set; }

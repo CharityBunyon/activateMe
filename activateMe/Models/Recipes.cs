@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace activateMe.Models
 {
-    public class SampleExercises
+    public class Recipes
     {
         public int Id { get; set; }
         public string Name { get; set; }

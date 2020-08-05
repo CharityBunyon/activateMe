@@ -56,13 +56,13 @@ namespace activateMe
 
             services.AddControllers();
             services.AddTransient<UserRepo>();
-            services.AddTransient<SampleRecipeRepo>();
-            services.AddTransient<SampleExercisesRepo>();
+            services.AddTransient<RecipeRepo>();
+            services.AddTransient<WorkoutRepo>();
             services.AddTransient<BadgeRepo>();
-            services.AddTransient<ExerciseCategoryRepo>();
-            services.AddTransient<ExerciseLogRepo>();
+            services.AddTransient<WorkoutTypeRepo>();
+            services.AddTransient<WorkoutLogRepo>();
             services.AddTransient<FoodLogRepo>();
-            services.AddTransient<FoodCategoryRepo>();
+            services.AddTransient<FoodTypeRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 

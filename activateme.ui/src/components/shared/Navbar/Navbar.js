@@ -5,12 +5,14 @@ import 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../../assets/activate-logo.png';
+
 import './Navbar.scss';
 
 class Navbar extends React.Component {
     logout = (e) => {
         e.preventDefault();
         firebase.auth().signOut();
+        sessionStorage.clear();
     };
 
     render() { 
@@ -40,7 +42,6 @@ class Navbar extends React.Component {
                 ): 
                 (null)}
                  
-                
                 <div className="right menu">
                     {authed ? (
 
@@ -52,10 +53,8 @@ class Navbar extends React.Component {
 
                         )
                     }
-                </div>
-                
+                </div> 
             </div>
-          
          );
     }
 }
