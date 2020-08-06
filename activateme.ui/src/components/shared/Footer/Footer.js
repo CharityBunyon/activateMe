@@ -5,7 +5,7 @@ import './Footer.scss';
 
 const Footer = () => (
     <div>
-        <Segment inverted vertical style={{ margin: '2em 0em 0em', padding: '1em 0em' }}>
+        <Segment inverted verticals>
             <Container textAlign='center'>
                 <Image centered size='mini' src={logo} />
                 <List horizontal inverted divided link size='small'>

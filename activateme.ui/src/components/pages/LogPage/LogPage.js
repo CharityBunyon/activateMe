@@ -4,6 +4,7 @@ import 'firebase/auth';
 import foodLogData from '../../../helpers/data/foodLogData';
 import workoutLogData from '../../../helpers/data/workoutLogData';
 import authData from '../../../helpers/data/authData';
+import goalData from '../../../helpers/data/goalData';
 import FoodLogCard from '../../shared/FoodLogCard/FoodLogCard';
 import WorkoutLogCard from '../../shared/WorkoutLogCard/WorkoutLogCard';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,7 @@ import './LogPage.scss';
 class FoodLogPage extends React.Component {
     state = { 
         user: {},
+        // goals: {},
         email: '',
         foodLogs: [],
         workoutLogs: [],
@@ -75,11 +77,19 @@ class FoodLogPage extends React.Component {
         .catch((error) => console.error(error, 'error from getting carbs'));
         authData.getFoodPoints(this.state.userId)
         .then((foodPoints) => this.setState({foodPoints}))
-        .catch((error) => console.error(error, 'error from getPoints in log page'))
+        .catch((error) => console.error(error, 'error from getPoints in log page'));
+
         authData.getWorkoutPoints(this.state.userId)
         .then((workoutPoints) => this.setState({workoutPoints}))
-        .catch((error) => console.error(error, 'error from getPoints in log page'))
+        .catch((error) => console.error(error, 'error from getPoints in log page'));
+        // this.getDailyGoals();
      }
+
+    //  getDailyGoals = () => {
+    //     goalData.getDailyGoalsById(this.state.userId)
+    //     .then((goals) => this.setState({goals}))
+    //     .catch((error) =>console.error(error, 'error from get goals in dashboard'))
+    //  }
 
 
     getUser = () => {
@@ -92,11 +102,29 @@ class FoodLogPage extends React.Component {
     deleteLog = (id) => {
         foodLogData.deleteLog(id)
         .then(() => foodLogData.getFoodLogsById(this.state.userId)
-        )
         .then((foodLogs) => {
             this.setState({foodLogs})
         })
-        .catch((error) => console.error(error, 'error from getting logs'));
+        .then(()=> foodLogData.getCaloriesEaten(this.state.userId))
+        .then((caloriesEaten) => {
+            this.setState({caloriesEaten})
+        })
+        .then(()=> foodLogData.getFats(this.state.userId))
+        .then((fats) => {
+            this.setState({fats})
+        })
+        .then(()=> foodLogData.getCarbs(this.state.userId))
+        .then((carbs) => {
+            this.setState({carbs})
+        })
+        .then(()=> foodLogData.getProtein(this.state.userId))
+        .then((protein) => {
+            this.setState({protein})
+        })
+        )
+        .catch((error) => console.error(error, 'error from delte bottom in log page'))
+       
+        
     }
 
     deleteWorkout = (id) => {
@@ -106,12 +134,59 @@ class FoodLogPage extends React.Component {
         .then((workoutLogs) => {
             this.setState({workoutLogs})
         })
-        .catch((error) => console.error(error, 'error from getting logs'));
+       .then(() =>  workoutLogData.getCaloriesBurned(this.state.userId))
+       .then((caloriesBurned) => {
+           this.setState({caloriesBurned})
+       })
+        .catch((error) => console.error(error, 'error from getting logs'))
+        
     }
 
     render() { 
-        const {foodLogs, workoutLogs, caloriesBurned, caloriesEaten, fats, carbs, protein, foodPoints, workoutPoints} = this.state;
+        const {foodLogs, workoutLogs, caloriesBurned, caloriesEaten, fats, carbs, protein, foodPoints, workoutPoints, goals} = this.state;
         let balance = this.state.caloriesEaten - this.state.caloriesBurned;
+        let goalDifference = {
+            carbs: carbs - goals.carbs,
+            fats: fats - goals.fats,
+            protein: protein - goals.protein,
+        }
+
+        let carbDifference;
+        if(goalDifference.carbs > 0 ){
+            carbDifference = (
+                <span className='macro-over'>(+{goalDifference.carbs})</span>
+            );
+        } else {
+            carbDifference = (
+                <span className='macro-under'>({goalDifference.carbs})</span>
+            );
+        }
+
+        let fatDifference;
+        if(goalDifference.fats > 0) {
+            fatDifference = (
+            <span className='macro-over'>(+{goalDifference.fats})</span>
+            );
+        } else {
+            fatDifference =(
+                <span className='macro-under'>({goalDifference.fats})</span>
+            )
+        }
+
+
+        let proteinDifference;
+        if(goalDifference.protein > 0) {
+            proteinDifference = (
+            <span className='macro-over'>(+{goalDifference.protein})</span>
+            );
+        } else {
+            proteinDifference =(
+                <span className='macro-under'>({goalDifference.protein})</span>
+            )
+        }
+
+
+
         return ( 
             <div>
                 <div className='ui container log-image-container'>
@@ -196,7 +271,7 @@ class FoodLogPage extends React.Component {
                     </Grid.Row>
                     </Grid>
                 </div>
-                <div className='food-logs'>
+                <div className='exercise-logs'>
                     <Grid columns={5} className='ui grid container'>
                     <Grid.Row>
                         <Grid.Column  className='log-contents grid-title'><strong>Workouts</strong></Grid.Column>
@@ -244,17 +319,17 @@ class FoodLogPage extends React.Component {
                         <div className='one wide column'><span className='minus log-contents'>-</span></div>
                         <div className="four wide column"><span className='cal-burned log-contents'>{caloriesBurned}</span><span>Calories from exercise</span></div>
                         <div className='one wide column'><span className='equals log-contents'>=</span></div>
-                        <div className="six wide column"><span className='total log-contents'>{balance}</span> </div>
+                        <div className="six wide column"><span className='total log-contents'>{balance}</span><span className='net-title'>Net Calories</span> </div>
                
                     </div>
 
-                    <div className='ui grid'>
+                    {/* <div className='ui grid'>
                         <div className="three wide column progress macro-container"><strong>Macros:</strong></div>
-                        <div className="three wide column macro-container macro-totals"><img src={bread} alt='bread' className='emoji-macro emoji'/>{carbs}g</div>
-                        <div className="three wide column macro-container macro-totals"><img src={fat} alt='bread' className='emoji-macro emoji'/>{fats}g</div>
-                        <div className="three wide column macro-container macro-totals"><img src={pro} alt='bread'className='emoji-macro emoji'/>{protein}g</div>
+                        <div className="three wide column macro-container macro-totals"><img src={bread} alt='bread' className='emoji-macro emoji'/>{carbs}g {goals.carbs > -1 && carbDifference}</div>
+                        <div className="three wide column macro-container macro-totals"><img src={fat} alt='bread' className='emoji-macro emoji'/>{fats}g {goals.fats > -1 && fatDifference}</div>
+                        <div className="three wide column macro-container macro-totals"><img src={pro} alt='bread'className='emoji-macro emoji'/>{protein}g {goals.protein > -1 && proteinDifference}</div>
                     </div>
-                    
+                     */}
                 </div>
             </div>
          );

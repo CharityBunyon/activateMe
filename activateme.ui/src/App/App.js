@@ -20,6 +20,7 @@ import Recipes from './../components/pages/Recipes/Recipes';
 import UserForm from '../components/pages/UserForm/UserForm';
 import FoodForm from './../components/pages/FoodForm/FoodForm';
 import WorkoutForm from '../components/pages/WorkoutForm/WorkoutForm';
+import GoalForm from '../components/pages/GoalForm/GoalForm';
 import Footer from '../components/shared/Footer/Footer';
 import authData from '../helpers/data/authData';
 
@@ -78,12 +79,17 @@ class App extends React.Component {
               <Route 
               path="/activateme/login"
               render={() => (authed ? (
-                <Redirect to="/"/>
+                <Redirect to="/activateme/dashboard"/>
               ):(
                 <Login/>
               ))}/>
               
-              <Route path="/activateme/register" exact component={Register}/>
+              <Route path="/activateme/register" 
+              render={() => (authed ? (
+                <Redirect to="/activateme/dashboard"/>
+              ):(
+                <Register/>
+              ))}/>
               <PrivateRoute authed={authed} path="/activateme/dashboard" exact component={Dashboard}/> 
               <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Workout}/>
               <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>
@@ -91,6 +97,7 @@ class App extends React.Component {
               <PrivateRoute authed={authed} path="/activateme/updateUser" exact component={UserForm}/>
               <PrivateRoute authed={authed} path="/activateme/foodForm" exact component={FoodForm}/>
               <PrivateRoute authed={authed} path="/activateme/exerciseForm" exact component={WorkoutForm}/>
+              <PrivateRoute authed={authed} path="/activateme/goalForm" exact component={GoalForm}/>
           </Switch>
           <Footer authed={authed} />
         </Router>

@@ -1,6 +1,6 @@
 .pro-image {
-    width: 275px;
-    height: 275px;
+    width: 300px;
+    height: 300px;
     border-radius: 15px;
 }
 
@@ -9,31 +9,28 @@
 }
 
 .city {
-    font-size: 16px;
+    font-size: 18px;
     color: teal;
 }
 
 .state {
-    font-size: 16px;
+    font-size: 18px;
     color: teal;
 }
 
 .member {
-    font-size: 16px;
+    font-size: 18px;
     color: teal;
 }
 
 .userinfo {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .points-container{
     margin: 80px;
 }
 
-// .content {
-//     margin: 60px;
-// }
 
 .total-points {
     color: teal;
@@ -42,7 +39,7 @@
 }
 
 .points-earned {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -68,3 +65,22 @@
   .badge-title{
     margin-top: 50px;
   }
+
+  .goal-container {
+      padding: 50px 0px 50px 0px;
+  }
+
+  .goalTitle{
+      color: teal;
+  }
+
+  .goalItems {
+      font-size: 18px;
+      font-weight: bold;
+  }
+
+  .goalValues{
+      font-size: 16px;
+  }
+
+  

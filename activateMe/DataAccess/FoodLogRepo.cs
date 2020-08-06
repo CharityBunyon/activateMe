@@ -88,6 +88,46 @@ namespace activateMe.DataAccess
             }
         }
 
+        //public FoodLog UpdateFoodLog(int id, FoodLog updatedFoodLog)
+        //{
+        //    var sql = @"Update FoodLog
+        //                SET 
+        //                    Name = @Name,
+        //                    FoodTypeId = @FoodTypeId,
+        //                    Quantity = @Quantity,
+        //                    Calories = @Calories,
+        //                    Carbs = @Carbs,
+        //                    Protein = @Protein,
+        //                    Fats = @Fats,
+        //                    UserId = @UserId
+        //                OUTPUT INSERTED. *
+        //                WHERE Id = @id";
+
+        //    var multiplierQuery = @"select PointMultiplier
+        //                            from FoodType
+        //                            where id = @FoodTypeId";
+        //    using (var db = new SqlConnection(ConnectionString))
+        //    {
+        //        var multiplier = db.QueryFirstOrDefault<int>(multiplierQuery, new { foodTypeId = updatedFoodLog.FoodTypeId });
+        //        var points = updatedFoodLog.Quantity * multiplier;
+        //        var parameters = new
+        //        {
+        //            updatedFoodLog.Name,
+        //            updatedFoodLog.FoodTypeId,
+        //            updatedFoodLog.Quantity,
+        //            updatedFoodLog.Calories,
+        //            updatedFoodLog.Carbs,
+        //            updatedFoodLog.Protein,
+        //            updatedFoodLog.Fats,
+        //            updatedFoodLog.UserId,
+        //            points = points,
+        //        };
+
+        //        var result = db.QueryFirstOrDefault<FoodLog>(sql, parameters);
+        //        return result;
+        //    }
+        //}
+
 
         public int? GetAllFoodCaloriesForUser(int uid)
         {

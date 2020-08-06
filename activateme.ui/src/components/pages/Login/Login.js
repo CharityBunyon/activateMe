@@ -27,7 +27,7 @@ class Login extends React.Component {
         const { email, password } = this.state;
         authData.loginUser(email, password)
         .then(() => {
-            this.props.history.push('/');
+            this.props.history.push('/activateme/log');
         })
         .catch((error) => {
         })

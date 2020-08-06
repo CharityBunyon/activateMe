@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle} from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import { Image,Popup, Grid } from 'semantic-ui-react'
+import { Image,Popup, Grid, Header } from 'semantic-ui-react'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import authData from '../../../helpers/data/authData';
 import badgeData from '../../../helpers/data/badgeData';
+import goalData from '../../../helpers/data/goalData';
 import BadgeCard from './../../shared/BadgeCard/BadgeCard';
 import recipes from '../../../assets/edited-recipe.png';
 import workouts from '../../../assets/edited-workout.png';
@@ -20,7 +21,8 @@ class Dashboard extends React.Component {
     state ={
         user: {},
         email: '',
-        badges: [], 
+        badges: [],
+        goals: {},
         foodPoints:'',
         workoutPoints: '',
         userId: Number(sessionStorage.getItem('userId')), 
@@ -39,6 +41,7 @@ class Dashboard extends React.Component {
            this.getUser();
            this.getFoodPoints();
            this.getWorkoutPoints();
+           this.getDailyGoals();
        }
      }
    ) 
@@ -64,9 +67,15 @@ class Dashboard extends React.Component {
     .catch((error) => console.error(error, 'error from getPoints in dashboard'))
 }
 
+ getDailyGoals = () => {
+    goalData.getDailyGoalsById(this.state.userId)
+    .then((goals) => this.setState({goals}))
+    .catch((error) =>console.error(error, 'error from get goals in dashboard'))
+ }
+
 
     render() { 
-       const {user, badges} = this.state;
+       const {user, badges, goals} = this.state;
        const totalPoints = this.state.foodPoints + this.state.workoutPoints;
       
         return ( 
@@ -94,8 +103,53 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
 
+                    <div className='ui container goal-container'>
+                       <h1 className='goalTitle'>Daily Goals</h1>
+                       <Grid container columns={4} doubling>
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Calories</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.calories}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Carbohydrates (g)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.carbs}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Fat (g)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.fats}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Protein (g)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.protein}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Fiber (g)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.fiber}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Sugar (g)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.sugar}</Grid.Row>
+                           </Grid.Column>
+
+                           <Grid.Column>
+                               <Grid.Row className='goalItems'>Sodium (mg)</Grid.Row>
+                               <Grid.Row className='goalValues'>{goals.sodium}</Grid.Row>
+                           </Grid.Column>
+                           <Grid.Column>
+                           <Link className='ui large submit button teal' to='/activateme/goalForm'>Edit Goals</Link> 
+                           </Grid.Column>
+                           
+                       </Grid>
+
+                    </div>
+
                     <div className='ui container'>
-                        <Grid divided='vertically'>
+                        <Grid verticals>
                                 <Grid.Column width={5}>
                                     <Link to='/activateme/recipes'><img src={recipes} alt='recipe-page-link' className='dashboard-images'/></Link>
                                 </Grid.Column>

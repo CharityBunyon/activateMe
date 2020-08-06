@@ -63,6 +63,7 @@ namespace activateMe
             services.AddTransient<WorkoutLogRepo>();
             services.AddTransient<FoodLogRepo>();
             services.AddTransient<FoodTypeRepo>();
+            services.AddTransient<DailyGoalRepo>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 

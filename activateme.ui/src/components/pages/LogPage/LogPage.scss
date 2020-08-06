@@ -41,6 +41,7 @@
 
 .add-content{
     color: #fff;
+    font-size: 18px;
 }
 
 .exercise-container{
@@ -80,7 +81,12 @@
 }
 
 .food-logs{
-    padding-bottom: 100px;
+    padding-bottom: 150px;
+}
+
+
+.exercise-logs{
+    padding-bottom: 150px;
 }
 
 .flame-img {
@@ -151,5 +157,23 @@
 
 .total, .grid-title{
     color: teal;
+}
+
+.recipe-title{
+    margin-bottom: 50px;
+}
+
+.macro-under{
+    color: green;
+    padding-left: 10px;
+}
+
+.macro-over{
+    color: red;
+    padding-left: 10px;
+}
+
+.net-title{
+    padding-left: 10px;
 }
 

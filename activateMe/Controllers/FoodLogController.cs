@@ -56,6 +56,14 @@ namespace activateMe.Controllers
             return Created("", newFoodLog);
         }
 
+        //[HttpPut("UpdateFood")]
+        //public IActionResult UpdateFood(int id, FoodLog updatedFoodLog)
+        //{
+        //    var updatedFood = _repository.UpdateFoodLog(id, updatedFoodLog);
+        //    return Ok(updatedFoodLog);
+        //}
+
+
         [HttpGet("calories/{id}")]
 
         public IActionResult GetCalories(int id)
