@@ -7,7 +7,7 @@ activateMe is a caloirie counting app that allows users to log plant based foods
 
 * C#
 * .NET
-* MS SQL Server
+* T-SQL
 * React
 * Semantic UI
 * Firebase (Storage)
