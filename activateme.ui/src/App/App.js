@@ -78,12 +78,18 @@ class App extends React.Component {
               <Route 
               path="/activateme/login"
               render={() => (authed ? (
-                <Redirect to="/"/>
+                <Redirect to="/activateme/dashboard"/>
               ):(
                 <Login/>
               ))}/>
-              
-              <Route path="/activateme/register" exact component={Register}/>
+              <Route 
+              path="/activateme/register"
+              render={() => (authed ? (
+                <Redirect to="/activateme/dashboard"/>
+              ):(
+                <Register/>
+              ))}/>
+              {/* <Route path="/activateme/register" exact component={Register}/> */}
               <PrivateRoute authed={authed} path="/activateme/dashboard" exact component={Dashboard}/> 
               <PrivateRoute authed={authed} path="/activateme/exercises" exact component={Workout}/>
               <PrivateRoute authed={authed} path="/activateme/recipes" exact component={Recipes}/>

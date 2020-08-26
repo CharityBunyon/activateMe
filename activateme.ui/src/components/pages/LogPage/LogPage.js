@@ -92,11 +92,27 @@ class FoodLogPage extends React.Component {
     deleteLog = (id) => {
         foodLogData.deleteLog(id)
         .then(() => foodLogData.getFoodLogsById(this.state.userId)
-        )
         .then((foodLogs) => {
             this.setState({foodLogs})
         })
-        .catch((error) => console.error(error, 'error from getting logs'));
+        .then(()=> foodLogData.getCaloriesEaten(this.state.userId))
+        .then((caloriesEaten) => {
+            this.setState({caloriesEaten})
+        })
+        .then(()=> foodLogData.getFats(this.state.userId))
+        .then((fats) => {
+            this.setState({fats})
+        })
+        .then(()=> foodLogData.getCarbs(this.state.userId))
+        .then((carbs) => {
+            this.setState({carbs})
+        })
+        .then(()=> foodLogData.getProtein(this.state.userId))
+        .then((protein) => {
+            this.setState({protein})
+        })
+        )
+        .catch((error) => console.error(error, 'error from delte bottom in log page'))
     }
 
     deleteWorkout = (id) => {
@@ -106,7 +122,11 @@ class FoodLogPage extends React.Component {
         .then((workoutLogs) => {
             this.setState({workoutLogs})
         })
-        .catch((error) => console.error(error, 'error from getting logs'));
+       .then(() =>  workoutLogData.getCaloriesBurned(this.state.userId))
+       .then((caloriesBurned) => {
+           this.setState({caloriesBurned})
+       })
+        .catch((error) => console.error(error, 'error from getting logs'))
     }
 
     render() { 
@@ -217,7 +237,7 @@ class FoodLogPage extends React.Component {
                         <Grid.Column  className='log-contents'><strong>Delete</strong></Grid.Column>
                     </Grid.Row>
                         <hr className='ui container'/>
-                    {workoutLogs.map((workoutLog) => <WorkoutLogCard key={workoutLog.id} workoutLog={workoutLog} deleteWorkout={this.deleteWorkout}/>)}
+                            {workoutLogs.map((workoutLog) => <WorkoutLogCard key={workoutLog.id} workoutLog={workoutLog} deleteWorkout={this.deleteWorkout}/>)}
                     <hr className='ui container'/>
                     <Grid.Row>
                         <Grid.Column className='log-contents total'><strong>Totals</strong></Grid.Column>
