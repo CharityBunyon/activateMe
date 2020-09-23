@@ -1,7 +1,7 @@
 # activateMe (Back-End Capstone)
 
 ## Description
-activateMe is a caloirie counting app that allows users to log plant based foods and exercises in order to earn points and badges. I built this app because I wanted users to eat more plant based foods. Upon login, the user will be redirected to their dashboard where they;ll be able to see their personal information, links to other features of the app, and a view of all their current badges.
+activateMe is a calorie counting app that allows users to log plant based foods and exercises in order to earn points and badges. I built this app because I wanted users to eat more plant based foods. Upon login, the user will be redirected to their dashboard where they;ll be able to see their personal information, links to other features of the app, and a view of all their current badges.
 
 ## Technologies Used
 
